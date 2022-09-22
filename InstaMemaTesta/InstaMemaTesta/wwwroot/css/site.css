@@ -183,6 +183,9 @@ app {
 }
 
 .MemaTestaGameBoard {
+    position:absolute;
+    top: 0%;
+    left: 0%;
     height: 600px;
     width: 800px;
     background: lightgray;
@@ -211,10 +214,10 @@ app {
     -webkit-animation: PulsatingText 1s 0s infinite;
 }
 
-.MemaTestaGameBoard.fade {
-    animation: PulsatingText 1s 0s infinite;
-    -webkit-animation: PulsatingText 1s 0s infinite;
-}
+    .MemaTestaGameBoard.fade {
+        animation: TitleFadeOut 1s 0s 1;
+        -webkit-animation: TitleFadeOut 1s 0s 1;
+    }
 
 .MemaTestaGameBoard .StartGame {
     top: 57%;
@@ -277,20 +280,34 @@ app {
     }
 }
 
-@keyframes name {
+@keyframes TitleFadeOut {
     from {
-        background: red;
+        opacity: 1
     }
 
     to {
-        background: yellow;
+        opacity: 0;
     }
 }
 
-@-moz-keyframes name {
+@-moz-keyframes TitleFadeOut {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
-@-webkit-keyframes name {
+@-webkit-keyframes TitleFadeOut {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 
