@@ -4,9 +4,9 @@
     <div class="row">
     </div>
     <div class="row">
-        <div class="col MemaTestaGameBoard align-self-center">
+        <div class="col MemaTestaGameBoard align-self-center" style="display:@display">
             <div class="memTaTitle">瞬时记忆力测试</div>
-            <div class="memTaButton StartGame">
+            <div class="memTaButton StartGame" @onclick="StartGame">
                 开始游戏
             </div>
             <div class="memTaButton ShowTutorial">
@@ -17,5 +17,10 @@
 </div>
 
 @code {
+    private string display = "";
 
+    private void StartGame()
+    {
+        display = "none";
+    }
 }

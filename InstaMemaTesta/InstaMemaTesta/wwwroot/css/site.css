@@ -206,12 +206,91 @@ app {
     transform: translate(-50%, 0)
 }
 
+.MemaTestaGameBoard .memTaButton:hover {
+    animation: PulsatingText 1s 0s infinite;
+    -webkit-animation: PulsatingText 1s 0s infinite;
+}
+
+.MemaTestaGameBoard.fade {
+    animation: PulsatingText 1s 0s infinite;
+    -webkit-animation: PulsatingText 1s 0s infinite;
+}
+
 .MemaTestaGameBoard .StartGame {
     top: 57%;
 }
 
 .MemaTestaGameBoard .ShowTutorial {
     top: 64%;
+}
+
+@keyframes PulsatingText {
+    10% {
+        font-size: 28px;
+    }
+
+    80% {
+        font-size: 32px;
+    }
+
+    90% {
+        font-size: 30px;
+    }
+    100% {
+        font-size: 32px;
+    }
+}
+
+@-moz-keyframes PulsatingText {
+    10% {
+        font-size: 28px;
+    }
+
+    80% {
+        font-size: 32px;
+    }
+
+    90% {
+        font-size: 30px;
+    }
+
+    100% {
+        font-size: 32px;
+    }
+}
+
+@-webkit-keyframes PulsatingText {
+    10% {
+        font-size: 28px;
+    }
+
+    80% {
+        font-size: 32px;
+    }
+
+    90% {
+        font-size: 30px;
+    }
+
+    100% {
+        font-size: 32px;
+    }
+}
+
+@keyframes name {
+    from {
+        background: red;
+    }
+
+    to {
+        background: yellow;
+    }
+}
+
+@-moz-keyframes name {
+}
+
+@-webkit-keyframes name {
 }
 
 
