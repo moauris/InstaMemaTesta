@@ -189,6 +189,7 @@ app {
     height: 600px;
     width: 800px;
     background: lightgray;
+    z-index: 50;
     
 }
 
@@ -217,6 +218,11 @@ app {
     .MemaTestaGameBoard.fade {
         animation: TitleFadeOut 1s 0s 1;
         -webkit-animation: TitleFadeOut 1s 0s 1;
+    }
+
+    .MemaTestaGameBoard.FadeOverlay {
+        opacity: 0;
+        z-index:49;
     }
 
 .MemaTestaGameBoard .StartGame {
@@ -282,31 +288,34 @@ app {
 
 @keyframes TitleFadeOut {
     from {
-        opacity: 1
+        opacity: 0;
     }
 
     to {
-        opacity: 0;
+        opacity: 1;
+        z-index: 999;
     }
 }
 
 @-moz-keyframes TitleFadeOut {
     from {
-        opacity: 1
+        opacity: 0;
     }
 
     to {
-        opacity: 0;
+        opacity: 1;
+        z-index: 999;
     }
 }
 
 @-webkit-keyframes TitleFadeOut {
     from {
-        opacity: 1
+        opacity: 0;
     }
 
     to {
-        opacity: 0;
+        opacity: 1;
+        z-index: 999;
     }
 }
 
