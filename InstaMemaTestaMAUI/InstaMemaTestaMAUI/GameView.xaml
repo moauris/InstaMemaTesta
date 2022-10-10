@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InstaMemaTestaMAUI.GameView"
+             Title="GameView"
+             x:Name="gmView">
+    <ContentPage.Style>
+        <Style x:Name="CenteredLabel" TargetType="{x:Type Label}">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Style>
+    <VerticalStackLayout>
+        <Label Style="{x:Reference CenteredLabel}"
+            Text="3 2 1 go!"
+            VerticalOptions="Center" />
+        <Label Style="{x:Reference CenteredLabel}"
+            Text="Device Width:"/>
+        <Label Style="{x:Reference CenteredLabel}"
+               x:Name="lblDeviceWidth"
+               Text="{Binding Source={x:Reference gmView},
+                              Path=Width,
+                              StringFormat='{0:F2}px'}
+                    "/>
+        <Label Style="{x:Reference CenteredLabel}"
+            Text="Device Height:"/>
+        <Label Style="{x:Reference CenteredLabel}"
+               x:Name="lblDeviceHeight"
+               Text="{Binding Source={x:Reference gmView},
+                              Path=Height,
+                              StringFormat='{0:F2}px'}
+                    "/>
+    </VerticalStackLayout>
+</ContentPage>

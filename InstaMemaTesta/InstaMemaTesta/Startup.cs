@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InstaMemaTesta.Models;
 
 namespace InstaMemaTesta
 {
@@ -28,6 +29,7 @@ namespace InstaMemaTesta
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<NumberCircle>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
