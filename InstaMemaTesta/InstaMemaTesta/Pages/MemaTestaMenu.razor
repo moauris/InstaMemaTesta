@@ -1,0 +1,28 @@
+﻿@page "/MemaTestaMenu"
+@inject NavigationManager NavManager
+
+<div class="MemaTestaGameBoard">
+    <div class="memTaTitle">瞬时记忆力测试</div>
+    <div class="memTaButton StartGame" @onclick="StartGame">
+        开始游戏
+    </div>
+    <div class="memTaButton ShowTutorial">
+        规则说明
+    </div>
+</div>
+<div class="MemaTestaGameBoard FadeOverlay @fadeclass"></div>
+
+
+
+@code {
+
+
+    private string fadeclass = "";
+
+    private async void StartGame()
+    {
+        fadeclass = "fade";
+        await Task.Delay(1000);
+        NavManager.NavigateTo("/MemaTestaCounter");
+    }
+}
