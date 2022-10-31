@@ -4,4 +4,26 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\game.ts\InstaMemaTesta.html" />
+    <None Include="wwwroot\game.ts\scripts\src\Game.js" />
+    <None Include="wwwroot\game.ts\scripts\src\GameView.js" />
+    <None Include="wwwroot\game.ts\scripts\src\GenRollTable.js" />
+    <None Include="wwwroot\game.ts\scripts\src\RandomCircle.js" />
+    <None Include="wwwroot\game.ts\scripts\src\RunGame.js" />
+    <None Include="wwwroot\game.ts\scripts\src\testjsrandom.js" />
+    <None Include="wwwroot\game.ts\scripts\tests\Game.initGame.test.js" />
+    <None Include="wwwroot\game.ts\scripts\tests\Game.initRound.test.js" />
+    <None Include="wwwroot\game.ts\scripts\tests\GenRollTable.test.js" />
+    <None Include="wwwroot\game.ts\src\Game.ts" />
+    <None Include="wwwroot\game.ts\src\GameView.ts" />
+    <None Include="wwwroot\game.ts\src\GenRollTable.ts" />
+    <None Include="wwwroot\game.ts\src\RandomCircle.ts" />
+    <None Include="wwwroot\game.ts\src\RunGame.ts" />
+    <None Include="wwwroot\game.ts\src\testjsrandom.ts" />
+    <None Include="wwwroot\game.ts\stylesheets\Game.css" />
+    <None Include="wwwroot\game.ts\stylesheets\RedWhiteZones.css" />
+    <None Include="wwwroot\game.ts\stylesheets\ScoreBoard.css" />
+  </ItemGroup>
+
 </Project>

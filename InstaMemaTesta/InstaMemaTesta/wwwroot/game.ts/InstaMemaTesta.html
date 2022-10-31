@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>瞬时记忆测试</title>
+        <link rel="stylesheet" href="./stylesheets/Game.css" />
+        <link rel="stylesheet" href="./stylesheets/RedWhiteZones.css" />
+        <link rel="stylesheet" href="./stylesheets/ScoreBoard.css" />
+
+    </head>
+    <body>
+        <div class="Canvas">
+            <div class="StartMenu" id="StartMenuPage">
+                
+                <h1>
+                    瞬时记忆测试
+                </h1>
+                <h2>
+                    <div onclick="startGame()">开始</div>
+                </h2>
+                <h2>
+                    <div>设置</div>
+                </h2>
+                <h2>
+                    <div>规则说明</div>
+                </h2>
+            </div>
+            <div class="CountDownPage" id="CountDownPage">
+                
+                <div class="SunrayBase Sunray0"></div>
+                <div class="SunrayBase Sunray1"></div>
+                <div class="SunrayBase Sunray2"></div>
+                <div class="SunrayBase Sunray3"></div>
+                <div class="SunrayBase Sunray4"></div>
+
+                <div class="SunrayBase Sunray5"></div>
+                <div class="SunrayBase Sunray6"></div>
+                <div class="SunrayBase Sunray7"></div>
+                <div class="SunrayBase Sunray8"></div>
+                <div class="SunrayBase Sunray9"></div>
+
+                <div class="SunrayBase Sunray10"></div>
+                <div class="SunrayBase Sunray11"></div>
+                <div class="SunrayBase Sunray12"></div>
+                <div class="SunrayBase Sunray13"></div>
+                <div class="SunrayBase Sunray14"></div>
+
+                <div class="SunrayBase Sunray15"></div>
+                <div class="SunrayBase Sunray16"></div>
+                <div class="SunrayBase Sunray17"></div>
+                <div class="SunrayBase Sunray18"></div>
+                <div class="SunrayBase Sunray19"></div>
+                <div class="SunrayBase Sunray20"></div>
+
+                <div class="CountDownNumBase CountDownNum3">3</div>
+                <div class="CountDownNumBase CountDownNum2">2</div>
+                <div class="CountDownNumBase CountDownNum1">1</div>
+            </div>
+            <div class="ShowNumberPage" id="ShowNumberPage">
+                <div class="Health" id="HealthBar">
+                    <li class="HealthPoint" id="HealthPoint"></li>
+                </div>
+                <div class="NumericBase" id="guessNumber_0">
+                    0
+                </div>
+                <div class="NumericBase" id="guessNumber_1">
+                    1
+                </div>
+                <div class="NumericBase" id="guessNumber_2">
+                    2
+                </div>
+                <div class="NumericBase" id="guessNumber_3">
+                    3
+                </div>
+                <div class="NumericBase" id="guessNumber_4">
+                    4
+                </div>
+                <div class="NumericBase" id="guessNumber_5">
+                    5
+                </div>
+                <div class="NumericBase" id="guessNumber_6">
+                    6
+                </div>
+                <div class="NumericBase" id="guessNumber_7">
+                    7
+                </div>
+                <div class="NumericBase" id="guessNumber_8">
+                    8
+                </div>
+                <div class="NumericBase" id="guessNumber_9">
+                    9
+                </div>
+
+            </div>
+            
+            <div class="ScoreBoard StartMenu" id="showScorePage">
+                <h2>
+                    <div onclick="restartGame()">再试一次</div>
+                </h2>
+                <h2>
+                    <div onclick="backToTitle()">返回主菜单</div>
+                </h2>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <script src="./scripts/src/Game.js"></script>
+        <script src="./scripts/src/GameView.js"></script>
+        <script src="./scripts/src/RunGame.js"></script>
+        <script src="./scripts/src/RandomCircle.js"></script>
+
+    </footer>
+</html>

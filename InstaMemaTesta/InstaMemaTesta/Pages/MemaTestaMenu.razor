@@ -1,28 +1,15 @@
 ﻿@page "/MemaTestaMenu"
 @inject NavigationManager NavManager
 
-<div class="MemaTestaGameBoard">
-    <div class="memTaTitle">瞬时记忆力测试</div>
-    <div class="memTaButton StartGame" @onclick="StartGame">
-        开始游戏
-    </div>
-    <div class="memTaButton ShowTutorial">
-        规则说明
-    </div>
-</div>
-<div class="MemaTestaGameBoard FadeOverlay @fadeclass"></div>
+
+<iframe style="width:820px;height:620px"
+    src=".\game.ts\InstaMemaTesta.html"
+    title="Insta Mema Testa"
+    id="gameAreaIFrame">
+
+</iframe>
 
 
 
 @code {
-
-
-    private string fadeclass = "";
-
-    private async void StartGame()
-    {
-        fadeclass = "fade";
-        await Task.Delay(1000);
-        NavManager.NavigateTo("/MemaTestaCounter");
-    }
 }

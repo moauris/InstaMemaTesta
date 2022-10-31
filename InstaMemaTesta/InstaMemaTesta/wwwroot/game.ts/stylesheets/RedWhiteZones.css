@@ -1,0 +1,14 @@
+div.ZoneBase {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+div.RedZone {
+    background: red;
+}
+
+div.WhiteZone {
+    background: white;
+}
