@@ -1,3 +1,4 @@
 # Build Results
 [Ss]cripts/
 [Ss]rc.d/
+*.tsbuildinfo
