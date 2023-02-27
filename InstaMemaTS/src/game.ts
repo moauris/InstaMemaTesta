@@ -2,15 +2,12 @@ export class Game {
     /**
      *
      */
-    constructor(maxRound : number) {
-        this.maxRound = maxRound;
-    }
     maxRound : number;
     currentRound : number;
     difficulty : number;
     GuessNumbers : Array<number> = [];
-
-    initGame(){
+    constructor(maxRound : number) {
+        this.maxRound = maxRound;
         this.currentRound = 1;
         this.difficulty = 4;
     }
@@ -87,7 +84,7 @@ export class Game {
         511
 
     ]
-    private GetRandom(lower, upper){
+    private GetRandom(lower : number, upper : number){
         let rand = Math.random() * (upper - lower) + lower;
     
         return Math.floor(rand);
