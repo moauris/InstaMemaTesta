@@ -25,6 +25,7 @@ function drawCanvus()
 }
 
 drawCanvus();
+
 visualViewport?.addEventListener("resize", (e) =>
 {
     console.log("resize filed in debug.js")

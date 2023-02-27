@@ -1,7 +1,7 @@
-class Imt_Game {
-    /**
-     *
-     */
+/** Represents one Insta Mema Testa Game Session
+ * 
+ */
+class ImtGame {
     maxRound : number;
     currentRound : number;
     difficulty : number;
