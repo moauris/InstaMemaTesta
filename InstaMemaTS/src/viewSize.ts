@@ -11,10 +11,11 @@ class VvpHandler {
             this.Width = viewPort!.width;
             printVvpDimension(this);
             viewPort!.onresize = (e) => {
+                console.log("resized within VvpHandler")
                 this.Height = viewPort!.height;
                 this.Width = viewPort!.width;
-            }
-            printVvpDimension(this);
+                printVvpDimension(this);
+            };
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -56,7 +57,7 @@ class VvpHandler {
  */
 function printVvpDimension(handler : VvpHandler)
 {
-    var sizeInfo = document.getElementById("sizeinfo");
+    var sizeInfo = document.getElementById("SizeInfo");
     sizeInfo!.innerText = handler.printDimension();
 }
 const vvpHandler : VvpHandler = new VvpHandler(visualViewport);

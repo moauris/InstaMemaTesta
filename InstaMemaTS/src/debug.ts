@@ -1,6 +1,3 @@
-var totalGrid : number = vvpHandler.totalGrids();
-var xGrid : number = vvpHandler.xGrids();
-var yGrid : number = vvpHandler.yGrids();
 
 function drawBlock(top: number, left: number)
 {
@@ -8,13 +5,30 @@ function drawBlock(top: number, left: number)
     div.classList.add("TwSqaureBlock");
     div.style.top = top.toFixed() + "px";
     div.style.left = left.toFixed() + "px";
-    document.getElementById("MainCanvus")!.appendChild(div);
+    document.getElementById("MainCanvas")!.appendChild(div);
 }
 
-for (let index = 0; index < totalGrid; index++) {
-    const left = (index % xGrid) * 20;
-    const top = ((index / xGrid) | 0) * 20;
-    drawBlock(top, left);
-    
+function clearCanvas()
+{
+    var canvas : Element | null = document.querySelector("div#MainCanvas");
+    if(canvas !== null)
+        canvas.innerHTML = "";
 }
+function drawCanvus()
+{
+    for (let index = 0; index < vvpHandler.totalGrids(); index++) {
+        const left = (index % vvpHandler.xGrids()) * 20;
+        const top = ((index / vvpHandler.xGrids()) | 0) * 20;
+        drawBlock(top, left);
+        
+    }
+}
+
+drawCanvus();
+visualViewport?.addEventListener("resize", (e) =>
+{
+    console.log("resize filed in debug.js")
+    clearCanvas();
+    drawCanvus();
+});
 
