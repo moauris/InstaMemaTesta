@@ -1,5 +1,4 @@
-declare function printVvpDimension(handler: VvpHandler): void;
-/** The InstaMema VisualViewport Handler handles the operations related to the current DOM viewport. */
+/** The InstaMema VisualViewport Handler handles the operations related to the current DOM's viewport. */
 declare class VvpHandler {
     Height: number;
     Width: number;
@@ -29,4 +28,8 @@ declare class VvpHandler {
      */
     printDimension(): string;
 }
+/** Prints the Vvp Dimension to the div id="sizeinfo"
+ *
+ */
+declare function printVvpDimension(handler: VvpHandler): void;
 declare const vvpHandler: VvpHandler;

@@ -1,4 +1,4 @@
-export class Imt_Game {
+class Imt_Game {
     /**
      *
      */

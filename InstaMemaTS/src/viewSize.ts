@@ -1,12 +1,3 @@
-/** Prints the Vvp Dimension to the div id="sizeinfo"
- * 
- */
-function printVvpDimension(handler : VvpHandler)
-{
-    var sizeInfo = document.getElementById("sizeinfo");
-    sizeInfo!.innerText = handler.printDimension();
-}
-
 /** The InstaMema VisualViewport Handler handles the operations related to the current DOM's viewport. */
 class VvpHandler {
     Height : number;
@@ -22,8 +13,8 @@ class VvpHandler {
             viewPort!.onresize = (e) => {
                 this.Height = viewPort!.height;
                 this.Width = viewPort!.width;
-                printVvpDimension(this);
             }
+            printVvpDimension(this);
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -60,7 +51,16 @@ class VvpHandler {
         return out + ", " + out1;
     }
 }
-
-
+/** Prints the Vvp Dimension to the div id="sizeinfo"
+ * 
+ */
+function printVvpDimension(handler : VvpHandler)
+{
+    var sizeInfo = document.getElementById("sizeinfo");
+    sizeInfo!.innerText = handler.printDimension();
+}
 const vvpHandler : VvpHandler = new VvpHandler(visualViewport);
 printVvpDimension(vvpHandler);
+
+
+

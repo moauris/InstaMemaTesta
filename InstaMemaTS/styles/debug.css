@@ -1,0 +1,18 @@
+* {
+    margin: 0px;
+}
+
+div.TwSqaureBlock {
+    width: 20px;
+    height: 20px;
+    position:absolute;
+}
+div.TwSqaureBlock:nth-child(3n) {
+    background-color: red;
+}
+div.TwSqaureBlock:nth-child(3n+1) {
+    background-color: goldenrod;
+}
+div.TwSqaureBlock:nth-child(3n+2) {
+    background-color: white;
+}
