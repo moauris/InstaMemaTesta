@@ -4,7 +4,8 @@ class ImtGame {
     currentRound : number;
     difficulty : number;
     GuessNumbers : Array<number> = [];
-    constructor(setting: ImtGameSetting) {
+    constructor(s: ImtGameSetting) {
+        this.setting = s;
         this.currentRound = 1;
         this.difficulty = 4;
     }

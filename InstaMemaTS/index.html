@@ -8,25 +8,52 @@
         <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <div id="MainCanvas">
-            <div id="Title"><h1><img src="./img/favicon.ico" height="128" width="128"/> 瞬时记忆</h1></div>
+        <div id="MainCanvas" class="PageActivated">
+            <div id="Title"><h1><img src="./img/favicon.ico" height="128" width="128" alt="favicon"/> 瞬时记忆</h1></div>
             <div class="StartMenu">
-                <div id="Start" class="StartMenuItem">开始</div>
+                <div id="Start" class="StartMenuItem" onclick="GameStart()">开始</div>
                 <div id="Readme" class="StartMenuItem">说明</div>
                 <div id="Setting" class="StartMenuItem">设置</div>
             </div>
 
             <footer>2023 &copy; mchenf All Rights Reserved.</footer>
         </div>
-        <div class="CountDown">
+        <div id="CountDown" class="PageDeactivated">
+            <div class="SunrayBase Sunray0"></div>
+            <div class="SunrayBase Sunray1"></div>
+            <div class="SunrayBase Sunray2"></div>
+            <div class="SunrayBase Sunray3"></div>
+            <div class="SunrayBase Sunray4"></div>
 
+            <div class="SunrayBase Sunray5"></div>
+            <div class="SunrayBase Sunray6"></div>
+            <div class="SunrayBase Sunray7"></div>
+            <div class="SunrayBase Sunray8"></div>
+            <div class="SunrayBase Sunray9"></div>
+
+            <div class="SunrayBase Sunray10"></div>
+            <div class="SunrayBase Sunray11"></div>
+            <div class="SunrayBase Sunray12"></div>
+            <div class="SunrayBase Sunray13"></div>
+            <div class="SunrayBase Sunray14"></div>
+
+            <div class="SunrayBase Sunray15"></div>
+            <div class="SunrayBase Sunray16"></div>
+            <div class="SunrayBase Sunray17"></div>
+            <div class="SunrayBase Sunray18"></div>
+            <div class="SunrayBase Sunray19"></div>
+            <div class="SunrayBase Sunray20"></div>
+
+            <div class="CountDownNumBase CountDownNum3">3</div>
+            <div class="CountDownNumBase CountDownNum2">2</div>
+            <div class="CountDownNumBase CountDownNum1">1</div>
         </div>
     </body>
     <footer>
         
         <script src="./scripts/game.js"></script>
         <script src="./scripts/viewSize.js"></script>
-        <script src="./scripts/scripts.js"></script>
+        <script src="./scripts/script.js"></script>
         
     </footer>
 </html>
