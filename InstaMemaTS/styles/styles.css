@@ -1,0 +1,71 @@
+* {
+    margin: 0px;
+}
+
+
+div#MainCanvas {
+    width:100vw;
+    height:100vh;
+    background-color: white;
+    font-family: "Microsoft YaHei", "MicrosoftJhengHei";
+}
+
+div#MainCanvas footer {
+    position: fixed;
+    top: 94vh;
+    left: 35vw;
+    width: 30vw;
+    height: 6vh;
+    text-align: center;
+    font-size: 11px;
+}
+
+div#Title {
+    background-color: white;
+    text-align: center;
+}
+div#Title > h1{
+    font-size: 10vw;
+}
+
+div.StartMenu {
+    display: block;
+    margin-top: 5vh;
+    background-color: white;
+}
+
+div.StartMenuItem {
+    align-content: center;
+    Font-size: 4vw;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    width: 20vw;
+    margin-left: 40vw;
+    transition-property: font-size text-shadow;
+    transition-duration: 0.5s;
+}
+div.StartMenuItem:hover {
+    font-size: 6vw;
+    text-shadow: 3px 3px lightblue;
+}
+div.TwSqaureBlock {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    position:absolute;
+}
+div.TwSqaureBlock:nth-child(3n) {
+    background-color: red;
+}
+div.TwSqaureBlock:nth-child(3n+1) {
+    background-color: goldenrod;
+}
+div.TwSqaureBlock:nth-child(3n+2) {
+    background-color: blue;
+}
+
+div.CountDown {
+    height: 0vh;
+    width: 0vw;
+}

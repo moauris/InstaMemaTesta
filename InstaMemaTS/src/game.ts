@@ -1,13 +1,10 @@
-/** Represents one Insta Mema Testa Game Session
- * 
- */
+/** Represents one Insta Mema Testa Game Session */
 class ImtGame {
-    maxRound : number;
+    setting : ImtGameSetting;
     currentRound : number;
     difficulty : number;
     GuessNumbers : Array<number> = [];
-    constructor(maxRound : number) {
-        this.maxRound = maxRound;
+    constructor(setting: ImtGameSetting) {
         this.currentRound = 1;
         this.difficulty = 4;
     }
@@ -23,15 +20,12 @@ class ImtGame {
         let lower : number = randLowerBounds[this.difficulty - 4];
         let upper : number = randUpperBounds[this.difficulty - 4];
 
-        let comboIndex : number = this.GetRandom(lower, 
-            upper);
+        let comboIndex : number = this.GetRandom(lower, upper);
 
         let comboBin : number = this.randomRollTable[comboIndex];
 
         this.GuessNumbers = 
             this.getNumArrFromBinary(comboBin, this.difficulty === 5);
-
-        
     }
 
     private getNumArrFromBinary(binary : number, 
@@ -82,11 +76,9 @@ class ImtGame {
         255,383,447,479,495,503,507,509,510,
         // 255, draw of 9
         511
-
     ]
     private GetRandom(lower : number, upper : number){
         let rand = Math.random() * (upper - lower) + lower;
-    
         return Math.floor(rand);
     }
 }
