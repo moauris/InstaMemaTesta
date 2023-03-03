@@ -17,8 +17,44 @@ function TogglePageActive(div : HTMLDivElement | null)
     }
 }
 
+
+
+var gameSetting = new ImtGameSetting();
+gameSetting.MaxRound = 10;
+gameSetting.NumberSet = NumberSets.Full;
+gameSetting.PositionSet = PositionSets.Everywhere;
+var game = new ImtGame(gameSetting);
+
+var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
+
+var grids = vvpHandler.Grids();
+
+function FillGrids(grids : boolean[][])
+{
+    var x : number = grids.length;
+    var y : number = grids[0].length;
+    for(var i = 0; i < x; i++)
+    {
+        for(var j = 0; j < y; j++)
+        {
+            var grid : HTMLDivElement = document.createElement("div");
+            grid.style.top = j * 20 + "px";
+            grid.style.left = i * 20 + "px";
+            grid.style.width = "20px";
+            grid.style.height = "20px";
+            grid.style.backgroundColor = grids[i][j] ? "Blue" : "Red";
+            grid.style.borderRadius = "50%";
+            grid.style.position = "fixed";
+            CountDown?.appendChild(grid);
+        }
+    }
+}
+
 function GameStart()
 {
     TogglePageActive(MainCanvas);
     TogglePageActive(CountDown);
+    setTimeout(() => FillGrids(grids), 3000);
+
 }
+

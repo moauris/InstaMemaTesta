@@ -1,21 +1,16 @@
 /** The InstaMema VisualViewport Handler handles the operations related to the current DOM's viewport. */
 class VvpHandler {
+    /** The Height of the viewport, in px and integer */
     Height : number;
+    /** The width of the viewport, in px and integer */
     Width : number;
     /**
      * Initializes a new VvpHandler instance
      * @param {VisualViewport | null} viewPort DOM VisualViewport
      */
     constructor(viewPort : VisualViewport | null) {
-            this.Height = viewPort!.height;
-            this.Width = viewPort!.width;
-            printVvpDimension(this);
-            viewPort!.onresize = (e) => {
-                console.log("resized within VvpHandler")
-                this.Height = viewPort!.height;
-                this.Width = viewPort!.width;
-                printVvpDimension(this);
-            };
+            this.Height = viewPort!.height | 0;
+            this.Width = viewPort!.width | 0;
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -41,6 +36,20 @@ class VvpHandler {
     {
         return this.xGrids() * this.yGrids();
     }
+
+    public Grids() : boolean[][]
+    {
+        var x : number = this.xGrids();
+        var y : number = this.yGrids();
+        
+        var result : boolean[][] = new Array<Array<boolean>>(x);
+        var id : number = 0;
+        for(var i = 0; i < x; i++)
+        {
+            result[i] = new Array<boolean>(y);
+        }
+        return result;
+    }
     /**
      * Prints the viewport dimension information, height x width, yGrid x xGrid
      * @returns {string} Information about the dimension.
@@ -52,16 +61,6 @@ class VvpHandler {
         return out + ", " + out1;
     }
 }
-/** Prints the Vvp Dimension to the div id="sizeinfo"
- * 
- */
-function printVvpDimension(handler : VvpHandler)
-{
-    var sizeInfo = document.getElementById("SizeInfo");
-    sizeInfo!.innerText = handler.printDimension();
-}
-const vvpHandler : VvpHandler = new VvpHandler(visualViewport);
-printVvpDimension(vvpHandler);
 
 
 

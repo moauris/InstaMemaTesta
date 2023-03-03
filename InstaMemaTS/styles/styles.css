@@ -3,17 +3,19 @@
 }
 
 .PageActivated {
-    width:100vw;
-    height:100vh;
+    display: block;
 }
 
 .PageDeactivated {
     display: none;
-    width:0vw;
-    height:0vh;
 }
-
+div#CountDown {
+    width:100vw;
+    height:100vh;
+}
 div#MainCanvas {
+    width:100vw;
+    height:100vh;
     background-color: white;
     font-family: "Microsoft YaHei", "MicrosoftJhengHei";
 }
@@ -74,13 +76,13 @@ div.TwSqaureBlock:nth-child(3n+2) {
 }
 
 div.SunrayBase {
-    height: 30px;
-    width: 12px;
+    height: 5vh;
+    width: 2vh;
     background-color: black;
     position:fixed;
-    top:285px;
-    left:394px;
-    transform-origin: 6px 90px;
+    top:45vh;
+    left:47vw;
+    transform-origin: 0.5vh 15vh;
     animation-name: SunrayDisperse;
     animation-fill-mode: forwards;
     animation-iteration-count: 3;
@@ -89,88 +91,88 @@ div.SunrayBase {
     opacity: 0;
 }
 div.Sunray0 {
-    transform: translate(0px, -60px) rotate(0deg);
+    transform: translate(0px, -17vh) rotate(0deg);
     animation-delay: 0ms;
 }
 div.Sunray1 {
-    transform: translate(0px, -60px) rotate(18deg);
+    transform: translate(0px, -17vh) rotate(18deg);
     
     animation-delay: 40ms;
 }
 div.Sunray2 {
-    transform: translate(0px, -60px) rotate(36deg);
+    transform: translate(0px, -17vh) rotate(36deg);
     animation-delay: 80ms;
 }
 div.Sunray3 {
-    transform: translate(0px, -60px) rotate(54deg);
+    transform: translate(0px, -17vh) rotate(54deg);
     animation-delay: 120ms;
 }
 div.Sunray4 {
-    transform: translate(0px, -60px) rotate(72deg);
+    transform: translate(0px, -17vh) rotate(72deg);
     animation-delay: 160ms;
 }
 div.Sunray5 {
-    transform: translate(0px, -60px) rotate(90deg);
+    transform: translate(0px, -17vh) rotate(90deg);
     animation-delay: 180ms;
 }
 div.Sunray6 {
-    transform: translate(0px, -60px) rotate(108deg);
+    transform: translate(0px, -17vh) rotate(108deg);
     animation-delay: 220ms;
 }
 div.Sunray7 {
-    transform: translate(0px, -60px) rotate(126deg);
+    transform: translate(0px, -17vh) rotate(126deg);
     animation-delay: 260ms;
 }
 div.Sunray8 {
-    transform: translate(0px, -60px) rotate(144deg);
+    transform: translate(0px, -17vh) rotate(144deg);
     animation-delay: 300ms;
 }
 div.Sunray9 {
-    transform: translate(0px, -60px) rotate(162deg);
+    transform: translate(0px, -17vh) rotate(162deg);
     animation-delay: 340ms;
 }
 div.Sunray10 {
-    transform: translate(0px, -60px) rotate(180deg);
+    transform: translate(0px, -17vh) rotate(180deg);
     animation-delay: 380ms;
 }
 div.Sunray11 {
-    transform: translate(0px, -60px) rotate(198deg);
+    transform: translate(0px, -17vh) rotate(198deg);
     animation-delay: 440ms;
 }
 div.Sunray12 {
-    transform: translate(0px, -60px) rotate(216deg);
+    transform: translate(0px, -17vh) rotate(216deg);
     animation-delay: 480ms;
 }
 div.Sunray13 {
-    transform: translate(0px, -60px) rotate(234deg);
+    transform: translate(0px, -17vh) rotate(234deg);
     animation-delay: 520ms;
 }
 div.Sunray14 {
-    transform: translate(0px, -60px) rotate(252deg);
+    transform: translate(0px, -17vh) rotate(252deg);
     animation-delay: 560ms;
 }
 div.Sunray15 {
-    transform: translate(0px, -60px) rotate(270deg);
+    transform: translate(0px, -17vh) rotate(270deg);
     animation-delay: 600ms;
 }
 div.Sunray16 {
-    transform: translate(0px, -60px) rotate(288deg);
+    transform: translate(0px, -17vh) rotate(288deg);
     animation-delay: 640ms;
 }
 div.Sunray17 {
-    transform: translate(0px, -60px) rotate(306deg);
+    transform: translate(0px, -17vh) rotate(306deg);
     animation-delay: 680ms;
 }
 div.Sunray18 {
-    transform: translate(0px, -60px) rotate(324deg);
+    transform: translate(0px, -17vh) rotate(324deg);
     animation-delay: 720ms;
 }
 div.Sunray19 {
-    transform: translate(0px, -60px) rotate(342deg);
+    transform: translate(0px, -17vh) rotate(342deg);
     animation-delay: 760ms;
 }
 div.Sunray20 {
-    transform: translate(0px, -60px) rotate(0deg);
+    transform: translate(0px, -17vh) rotate(0deg);
     animation-delay: 800ms;
 }
 
@@ -187,12 +189,12 @@ div.Sunray20 {
 div.CountDownNumBase {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 104px;
+    font-size: 10vw;
     position:fixed;
-    width:120px;
-    height:120px;
-    top:250px;
-    left:340px;
+    width:12vh;
+    height:12vh;
+    top:31vh;
+    left:44vw;
     opacity: 0;
     animation-name: SunrayDisperse;
     animation-fill-mode: forwards;
