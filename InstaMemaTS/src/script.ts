@@ -1,3 +1,5 @@
+const DEBUG : boolean = true;
+
 
 const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas");
 const CountDown : HTMLDivElement | null = document.querySelector("#CountDown");
@@ -64,7 +66,7 @@ function GameStart()
         TogglePageActive(ShowNumberPage);
         vvpHandler.setDeadZone();
         game.StartRound(grids);
-        FillGrids(grids);
+        if(DEBUG) FillGrids(grids);
     }, 3000);
 
 }

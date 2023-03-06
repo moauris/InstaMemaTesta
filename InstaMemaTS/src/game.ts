@@ -17,19 +17,59 @@ class ImtGame {
     /** Starts a round of game on supplied grids object */
     public StartRound(grids : boolean[][])
     {
+        //Get the numbers to display.
+        var nums : number[] = Draw(this.difficulty, this.setting.NumberSet);
         //Below procedure selects the grids where the circles are placed in the center
+        var coords : gridCoordinate[] = this.getCoordinates(grids);
+
+        if(nums.length !== coords.length)
+        {
+            throw new Error("The number of draws mismatch grids available: num, grid = (" + nums.length + ", " + coords.length + ")");
+        }
+        var len = nums.length;
+        for(var i = 0; i < len; i++)
+        {
+            this.ShowNumber(nums[i], coords[i]);
+        }
+
+        
+    }
+
+    /**Show a number on a location on the viewport depending on the number supplied and grid coordinate
+     * @param {number} num A number between 0 and 9.
+     * @param {gridCoordinate} center Determines where to put the number div.
+    */
+    public ShowNumber(num : number, center : gridCoordinate)
+    {
+        var gN : HTMLDivElement | null = document.querySelector("div#guessNumber_" + num);
+        if(gN === null)
+        {
+            throw new Error("#guessNumber_" + num + " cannot be found.")
+        }
+        gN.classList.add("Show");
+
+        gN.style.top = center.Y * 20 - 60 + "px";
+        gN.style.left = center.X * 20 - 60 + "px";
+    }
+
+    private getCoordinates(grids : boolean[][]) : gridCoordinate[]
+    {
+        var coords : gridCoordinate[] = [];
         for(var i = 0; i < this.difficulty; i++)
         {
             var range : number = this.CountGrid(grids);
             //This would mean the current grid doesn't have any grid to place the circle
             //In which case return doing nothing.
-            if(range < 0) return;
+            if(range < 0) break;
             //There are somewhere to place grid, continue
             //roll a number to decide which grid
             var draw : number = GetRandom(0, range);
-            this.drawGrid(grids, draw);
-
+            var coord = this.drawGrid(grids, draw);
+            if(coord !== null)
+                coords.push(coord);
         }
+
+        return coords;
     }
 
 
