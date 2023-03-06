@@ -1,4 +1,4 @@
-const DEBUG : boolean = true;
+const DEBUG : boolean = false;
 
 
 const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas");
@@ -24,14 +24,14 @@ function TogglePageActive(div : HTMLDivElement | null)
 
 var gameSetting = new ImtGameSetting();
 gameSetting.MaxRound = 10;
-gameSetting.NumberSet = NumberSets.Full;
+gameSetting.NumberSet = NumberSets.Circles;
 gameSetting.PositionSet = PositionSets.Everywhere;
 
 var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
 
 var game = new ImtGame(gameSetting, vvpHandler);
 
-game.difficulty = 9;
+game.difficulty = 4;
 
 
 function FillGrids()
@@ -57,15 +57,11 @@ function FillGrids()
 
 function GameStart()
 {
-    TogglePageActive(MainCanvas);
-    TogglePageActive(CountDown);
     setTimeout(() => 
     {
-        TogglePageActive(CountDown);
-        TogglePageActive(ShowNumberPage);
         game.StartRound();
         if(DEBUG) FillGrids();
-    }, 3000);
+    }, 1500);
 
 }
 

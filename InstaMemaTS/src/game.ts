@@ -9,6 +9,17 @@ class ImtGame {
      */
     difficulty : number;
     GuessNumbers : Array<number> = [];
+    /** The current score
+     * difficulty : score value
+     * 4 : 2pt
+     * 5 : 4pt
+     * 6 : 8pt
+     * 7 : 16pt
+     * 8 : 32pt
+     * 9 : 64pt
+     * 10 : 126pts
+     */
+    currentScore : number = 0;
     constructor(s: ImtGameSetting, vp : VvpHandler) {
         this.setting = s;
         this.currentRound = 1;
@@ -31,8 +42,26 @@ class ImtGame {
     /** Starts a round of game on supplied grids object */
     public StartRound()
     {
-        // Set all NumericBase to nothing
+        //Check if score board should be shown instead
+        
+        if(this.setting.MaxRound === 0){
+            this.ShowScoreboard();
+        }
+        if(this.currentRound === 1)
+        {
+            TogglePageActive(MainCanvas);
+        } else {
+            TogglePageActive(ShowNumberPage);
+        }
+        TogglePageActive(CountDown);
+        setTimeout(() => {
+            TogglePageActive(CountDown);
+            TogglePageActive(ShowNumberPage);
+        }, 3000);
 
+        this.currentRound++;
+        this.setting.MaxRound--;
+        // Set all NumericBase to nothing
         var classTags : string[] = ["Guess", "Wrong", "Chosen", "Correct"];
 
         for(var i = 0; i < classTags.length; i++)
@@ -63,7 +92,7 @@ class ImtGame {
             {
                 this.HideNumber(nums[i]);
             }
-        }, 1000);
+        }, 4000);
     }
 
 
@@ -93,11 +122,41 @@ class ImtGame {
         {
             gN.classList.remove("Guess");
             gN.classList.add("Chosen");
+            if(this.Expects.length == 0)
+            {
+                this.CorrectNumbers();
+            }
         }
         else
         {
             this.WrongNumbers();
         }
+    }
+    public ShowScoreboard()
+    {
+
+    }
+
+    private scored() : number
+    {
+        return 2 ** (this.difficulty - 3);
+    }
+    //**A correct number is chosen. Mark all remaining guess items wrong and start the next round if possible */
+    public CorrectNumbers()
+    {
+        var gN : HTMLDivElement | null = document.querySelector("div.NumericBase.Chosen");
+        while(gN !== null)
+        {
+            gN.classList.remove("Chosen");
+            gN.classList.add("Correct");
+            gN = document.querySelector("div.NumericBase.Chosen");
+        }
+        this.difficulty = this.difficulty + 1 > 10 ? 10 : this.difficulty + 1;
+        this.currentScore += this.scored();
+        setTimeout(() => 
+        {
+            this.StartRound();
+        }, 3000);
     }
 
     //**A wrong number is chosen. Mark all remaining guess items wrong and start the next round if possible */
@@ -111,7 +170,7 @@ class ImtGame {
             gN.classList.add("Wrong");
             gN = document.querySelector("div.NumericBase.Guess");
         }
-
+        this.difficulty = this.difficulty -1 < 4 ? 4 : this.difficulty - 1;
         setTimeout(() => 
         {
             this.StartRound();

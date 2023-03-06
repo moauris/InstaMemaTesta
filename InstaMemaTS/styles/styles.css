@@ -201,7 +201,7 @@ div.CountDownNum1 {
 
 div.ShowNumberPage {
     position: fixed;
-    background-color: darkcyan;
+    background-color: white;
     top: 0px;
     height: 0px;
     width: 100vw;
@@ -233,8 +233,8 @@ div.NumericBase.Show {
 
 div.NumericBase.Guess {
     border-color: black;
-    background-color: darkgrey;
-    box-shadow: 5px 5px 5px 5px gray inset;
+    background-color: white;
+    box-shadow: 1px 2px 1px lightgrey inset;
     color: transparent;
     display: block;
 }
@@ -246,11 +246,15 @@ div.NumericBase.Chosen {
 }
 
 div.NumericBase.Correct {
-    background-color: darkgreen;
+    background-color: lightgreen;
+    border-color: darkgreen;
+    color: black;
+    display: block;
 }
 
 div.NumericBase.Wrong {
     background-color: red;
+    border-color: pink;
     color: white;
     display: block;
 }
@@ -258,6 +262,8 @@ div.NumericBase.Wrong {
 li.HealthPoint {
     float: left;
     list-style-type: none;
+    border-radius: 50%;
+    background-color: green;
 }
 
 
