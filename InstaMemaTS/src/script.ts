@@ -24,6 +24,7 @@ var gameSetting = new ImtGameSetting();
 gameSetting.MaxRound = 10;
 gameSetting.NumberSet = NumberSets.Full;
 gameSetting.PositionSet = PositionSets.Everywhere;
+
 var game = new ImtGame(gameSetting);
 
 var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
@@ -60,6 +61,7 @@ function GameStart()
         TogglePageActive(CountDown);
         TogglePageActive(ShowNumberPage);
         vvpHandler.setDeadZone();
+        game.StartRound(grids);
         FillGrids(grids);
     }, 3000);
 
