@@ -1,6 +1,7 @@
 /** Represents one Insta Mema Testa Game Session */
 class ImtGame {
     setting : ImtGameSetting;
+    viewPortHandler : VvpHandler;
     currentRound : number;
     /** The difficulty of the game, an integer between 4 - 10
      * For a game with difficulty of 4, 4 numbers will be drawn
@@ -8,31 +9,92 @@ class ImtGame {
      */
     difficulty : number;
     GuessNumbers : Array<number> = [];
-    constructor(s: ImtGameSetting) {
+    constructor(s: ImtGameSetting, vp : VvpHandler) {
         this.setting = s;
         this.currentRound = 1;
         this.difficulty = 4;
+        this.viewPortHandler = vp;
     }
 
+    private Expects : number[] = [];
     /** Starts a round of game on supplied grids object */
-    public StartRound(grids : boolean[][])
+    public StartRound()
     {
         //Get the numbers to display.
         var nums : number[] = Draw(this.difficulty, this.setting.NumberSet);
+
         //Below procedure selects the grids where the circles are placed in the center
-        var coords : gridCoordinate[] = this.getCoordinates(grids);
+        var coords : gridCoordinate[] = this.getCoordinates(this.viewPortHandler.Grids());
 
         if(nums.length !== coords.length)
         {
             throw new Error("The number of draws mismatch grids available: num, grid = (" + nums.length + ", " + coords.length + ")");
         }
         var len = nums.length;
+
         for(var i = 0; i < len; i++)
         {
+            this.Expects[i] = nums[i];
             this.ShowNumber(nums[i], coords[i]);
         }
+        setTimeout(() => {
+            for(var i = 0; i < len; i++)
+            {
+                this.HideNumber(nums[i]);
+            }
+        }, 1000);
+    }
 
-        
+
+
+    public HideNumber(num : number)
+    {
+        var gN : HTMLDivElement | null = document.querySelector("div#guessNumber_" + num);
+        if(gN === null)
+        {
+            throw new Error("#guessNumber_" + num + " cannot be found.")
+        }
+        gN.classList.remove("Show");
+        gN.classList.add("Guess");
+        gN.onclick = (ev) => this.Answered(num);
+    }
+
+    public Answered(num : number)
+    {
+        var gN : HTMLDivElement | null = document.querySelector("div#guessNumber_" + num);
+        if(gN === null)
+        {
+            throw new Error("#guessNumber_" + num + " cannot be found.")
+        }
+        var Ans : number | undefined = this.Expects.pop();
+        console.log("Expect " + Ans + ", answered: " + num);
+        if(Ans === num)
+        {
+            gN.classList.remove("Guess");
+            gN.classList.add("Chosen");
+        }
+        else
+        {
+            this.WrongNumbers();
+        }
+    }
+
+    //**A wrong number is chosen. Mark all remaining guess items wrong and start the next round if possible */
+    public WrongNumbers()
+    {
+        var gN : HTMLDivElement | null = document.querySelector("div.NumericBase.Guess");
+
+        while(gN !== null)
+        {
+            gN.classList.remove("Guess");
+            gN.classList.add("Wrong");
+            gN = document.querySelector("div.NumericBase.Guess");
+        }
+
+        setTimeout(() => 
+        {
+            this.StartRound((new VvpHandler()).Grids());
+        }, 3000);
     }
 
     /**Show a number on a location on the viewport depending on the number supplied and grid coordinate

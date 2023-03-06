@@ -7,6 +7,8 @@ class VvpHandler {
 
     /** Uniform radius of the number circles*/
     Radius: number = 3;
+
+    Grids: boolean[][];
     /**
      * Initializes a new VvpHandler instance
      * @param {VisualViewport | null} viewPort DOM VisualViewport
@@ -14,6 +16,7 @@ class VvpHandler {
     constructor(viewPort : VisualViewport | null) {
             this.Height = viewPort!.height | 0;
             this.Width = viewPort!.width | 0;
+            this.Grids = this.createGrids();
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -40,7 +43,7 @@ class VvpHandler {
         return this.xGrids() * this.yGrids();
     }
 
-    public Grids() : boolean[][]
+    public createGrids() : boolean[][]
     {
         var x : number = this.xGrids();
         var y : number = this.yGrids();
@@ -70,7 +73,7 @@ class VvpHandler {
         {
             for(var y = this.Radius + 2; y < this.yGrids() - this.Radius; y++)
             {
-                grids[x][y] = true;
+                this.Grids[x][y] = true;
             }
         }
     }

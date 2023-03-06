@@ -1,5 +1,5 @@
 
-function drawBlock(top: number, left: number)
+function renderBlock(top: number, left: number)
 {
     const div : HTMLDivElement = document.createElement("div");
     div.classList.add("TwSqaureBlock");
@@ -19,7 +19,7 @@ function drawCanvus()
     for (let index = 0; index < vvpHandler.totalGrids(); index++) {
         const left = (index % vvpHandler.xGrids()) * 20;
         const top = ((index / vvpHandler.xGrids()) | 0) * 20;
-        drawBlock(top, left);
+        renderBlock(top, left);
         
     }
 }

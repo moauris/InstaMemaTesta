@@ -214,7 +214,7 @@ div.NumericBase {
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    border-color: chartreuse;
+    border-color: blue;
     border-width: 5px;
     border-style: solid;
     font-size: 110px;
@@ -222,22 +222,27 @@ div.NumericBase {
     -webkit-user-select: none;
     user-select: none;
     display: none;
+    z-index: 999;
 }
 
 div.NumericBase.Show {
-    background-color: transparent;
-    z-index: 999;
+    background-color: white;
     border-color:transparent;
     display: block;
 }
 
 div.NumericBase.Guess {
-    border-color: chartreuse;
+    border-color: black;
+    background-color: darkgrey;
+    box-shadow: 5px 5px 5px 5px gray inset;
     color: transparent;
+    display: block;
 }
 
 div.NumericBase.Chosen {
-    background-color: sienna;
+    background-color: darkblue;
+    color: white;
+    display: block;
 }
 
 div.NumericBase.Correct {
@@ -245,7 +250,9 @@ div.NumericBase.Correct {
 }
 
 div.NumericBase.Wrong {
-    background-color: darkred;
+    background-color: red;
+    color: white;
+    display: block;
 }
 
 li.HealthPoint {

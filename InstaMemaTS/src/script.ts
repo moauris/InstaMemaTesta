@@ -27,18 +27,17 @@ gameSetting.MaxRound = 10;
 gameSetting.NumberSet = NumberSets.Full;
 gameSetting.PositionSet = PositionSets.Everywhere;
 
-var game = new ImtGame(gameSetting);
+var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
+
+var game = new ImtGame(gameSetting, vvpHandler);
 
 game.difficulty = 9;
 
-var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
 
-var grids = vvpHandler.Grids();
-
-function FillGrids(grids : boolean[][])
+function FillGrids()
 {
-    var x : number = grids.length;
-    var y : number = grids[0].length;
+    var x : number = vvpHandler.Grids.length;
+    var y : number = vvpHandler.Grids[0].length;
     for(var i = 0; i < x; i++)
     {
         for(var j = 0; j < y; j++)
@@ -48,7 +47,7 @@ function FillGrids(grids : boolean[][])
             grid.style.left = i * 20 + "px";
             grid.style.width = "20px";
             grid.style.height = "20px";
-            grid.style.backgroundColor = grids[i][j] ? "Blue" : "Red";
+            grid.style.backgroundColor = vvpHandler.Grids[i][j] ? "Blue" : "Red";
             grid.style.borderRadius = "50%";
             grid.style.position = "fixed";
             ShowNumberPage?.appendChild(grid);
@@ -65,8 +64,8 @@ function GameStart()
         TogglePageActive(CountDown);
         TogglePageActive(ShowNumberPage);
         vvpHandler.setDeadZone();
-        game.StartRound(grids);
-        if(DEBUG) FillGrids(grids);
+        game.StartRound();
+        if(DEBUG) FillGrids();
     }, 3000);
 
 }
