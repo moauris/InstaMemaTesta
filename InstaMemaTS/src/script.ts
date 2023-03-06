@@ -27,7 +27,7 @@ gameSetting.PositionSet = PositionSets.Everywhere;
 
 var game = new ImtGame(gameSetting);
 
-game.difficulty = 7;
+game.difficulty = 9;
 
 var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
 

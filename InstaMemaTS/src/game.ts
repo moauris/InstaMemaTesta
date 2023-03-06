@@ -2,6 +2,10 @@
 class ImtGame {
     setting : ImtGameSetting;
     currentRound : number;
+    /** The difficulty of the game, an integer between 4 - 10
+     * For a game with difficulty of 4, 4 numbers will be drawn
+     * For a game with difficulty of 10, 10 numbers will be drawn
+     */
     difficulty : number;
     GuessNumbers : Array<number> = [];
     constructor(s: ImtGameSetting) {
@@ -21,7 +25,7 @@ class ImtGame {
         let lower : number = randLowerBounds[this.difficulty - 4];
         let upper : number = randUpperBounds[this.difficulty - 4];
 
-        let comboIndex : number = this.GetRandom(lower, upper);
+        let comboIndex : number = GetRandom(lower, upper);
 
         let comboBin : number = this.randomRollTable[comboIndex];
 
@@ -78,14 +82,11 @@ class ImtGame {
         // 255, draw of 9
         511
     ]
-    private GetRandom(lower : number, upper : number){
-        let rand = Math.random() * (upper - lower) + lower;
-        return Math.floor(rand);
-    }
 
     /** Starts a round of game on supplied grids object */
     public StartRound(grids : boolean[][])
     {
+        //Below procedure selects the grids where the circles are placed in the center
         for(var i = 0; i < this.difficulty; i++)
         {
             var range : number = this.CountGrid(grids);
@@ -94,10 +95,13 @@ class ImtGame {
             if(range < 0) return;
             //There are somewhere to place grid, continue
             //roll a number to decide which grid
-            var draw : number = this.GetRandom(0, range);
-            this.drawGrid(grids, draw)
+            var draw : number = GetRandom(0, range);
+            this.drawGrid(grids, draw);
+
         }
     }
+
+
 
     private trySetGrid(grid : boolean[][], x : number, y : number, setAs : boolean)
     {
