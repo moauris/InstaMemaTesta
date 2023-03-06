@@ -124,7 +124,7 @@ class ImtGame {
         }
         gN.classList.remove("Show");
         gN.classList.add("Guess");
-        gN.onclick = (ev) => this.Answered(num);
+        gN.onclick = () => this.Answered(num);
     }
 
     public Answered(num : number)
@@ -134,7 +134,6 @@ class ImtGame {
         {
             throw new Error("#guessNumber_" + num + " cannot be found.")
         }
-        gN.onclick = null;
         var Ans : number | undefined = this.Expects.pop();
         if(Ans === num)
         {
@@ -149,6 +148,10 @@ class ImtGame {
         {
             this.WrongNumbers();
         }
+        var wav = new Audio("wav/GunShotSnglShotIn_PE1097906.mp3");
+        
+        wav.play();
+        gN.removeEventListener("click", () => this.Answered(num));
     }
 
     public ShowScoreboard()

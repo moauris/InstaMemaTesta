@@ -54,10 +54,49 @@ div.StartMenuItem {
     margin-left: 30vw;
     transition-property: font-size text-shadow;
     transition-duration: 0.5s;
+    margin-top: 1vh;
+    animation-name:Wiggle;
+    animation-duration: 1s; 
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+div.StartMenuItem:nth-child(2)
+{
+    animation-delay: 335ms;
+}
+div.StartMenuItem:nth-child(3)
+{
+    animation-delay: 178ms;
+}
+
+@keyframes Wiggle{
+    0% {
+        transform: translateX(0px)
+    }
+    58% {
+        transform: translateX(0px)
+    }
+    70% {
+        transform: translateX(4px)
+    }
+    82% {
+        transform: translateX(-4px)
+    }
+    90% {
+        transform: translateX(2px)
+    }
+    95% {
+        transform: translateX(-2px)
+    }
+    100% {
+        transform: translateX(0px)
+    }
 }
 div.StartMenuItem:hover {
     font-size: 6vw;
     text-shadow: 5px 5px 5px gray;
+    animation-name: none;
 }
 
 div.SunrayBase {
@@ -223,6 +262,7 @@ div.NumericBase {
     user-select: none;
     display: none;
     z-index: 999;
+    pointer-events: none;
     
 }
 
@@ -239,6 +279,7 @@ div.NumericBase.Guess {
     color: transparent;
     cursor: pointer;
     display: block;
+    pointer-events: all;
 }
 
 div.NumericBase.Chosen {
@@ -298,22 +339,22 @@ div#CountPage {
 }
 
 div.ScoreText {
-    position: relative;
+    position: fixed;
     text-align: center;
     font-size: 6vw;
     width: 30vw;
     left: 35vw;
-    top: 40vh;
+    top: 35vh;
     background-color: transparent;
 }
 
 h1.ScoreNum {
-    position: relative;
+    position: fixed;
     text-align: center;
     font-size: 12vw;
     width: 18vw;
     left: 41vw;
-    top: 40vh;
+    top: 48vh;
     background-color: transparent;
     border-bottom: 6px double gray;
 }
