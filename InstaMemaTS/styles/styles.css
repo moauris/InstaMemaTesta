@@ -17,7 +17,7 @@ div#MainCanvas {
     width:100vw;
     height:100vh;
     background-color: white;
-    font-family: "Microsoft YaHei", "MicrosoftJhengHei";
+    font-family: "Microsoft YaHei", "Microsoft JhengHei";
 }
 
 div#MainCanvas footer {
@@ -57,22 +57,7 @@ div.StartMenuItem {
 }
 div.StartMenuItem:hover {
     font-size: 6vw;
-    text-shadow: 3px 3px lightblue;
-}
-div.TwSqaureBlock {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-    position:absolute;
-}
-div.TwSqaureBlock:nth-child(3n) {
-    background-color: red;
-}
-div.TwSqaureBlock:nth-child(3n+1) {
-    background-color: goldenrod;
-}
-div.TwSqaureBlock:nth-child(3n+2) {
-    background-color: blue;
+    text-shadow: 5px 5px 5px gray;
 }
 
 div.SunrayBase {
@@ -80,8 +65,8 @@ div.SunrayBase {
     width: 2vh;
     background-color: black;
     position:fixed;
-    top:45vh;
-    left:47vw;
+    top:46vh;
+    left:50vw;
     transform-origin: 0.5vh 15vh;
     animation-name: SunrayDisperse;
     animation-fill-mode: forwards;
@@ -189,13 +174,14 @@ div.Sunray20 {
 div.CountDownNumBase {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 10vw;
+    font-size: 12vh;
     position:fixed;
-    width:12vh;
+    width:12vw;
     height:12vh;
-    top:31vh;
+    top:38vh;
     left:44vw;
     opacity: 0;
+    background-color: transparent;
     animation-name: SunrayDisperse;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -211,6 +197,54 @@ div.CountDownNum2 {
 }
 div.CountDownNum1 {
     animation-delay: 2s;
+}
+
+div.ShowNumberPage {
+    position: fixed;
+    background-color: darkcyan;
+    top: 0px;
+    height: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+div.NumericBase {
+    position: fixed;
+    border-radius: 50%;
+    border-color: chartreuse;
+    border-width: 5px;
+    border-style: solid;
+    font-size: 70px;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+    display: none;
+}
+
+div.NumericBase.Show {
+    border-color:transparent;
+}
+
+div.NumericBase.Guess {
+    border-color: chartreuse;
+    color: transparent;
+}
+
+div.NumericBase.Chosen {
+    background-color: sienna;
+}
+
+div.NumericBase.Correct {
+    background-color: darkgreen;
+}
+
+div.NumericBase.Wrong {
+    background-color: darkred;
+}
+
+li.HealthPoint {
+    float: left;
+    list-style-type: none;
 }
 
 

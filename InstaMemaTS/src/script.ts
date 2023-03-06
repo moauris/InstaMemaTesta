@@ -1,6 +1,7 @@
 
 const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas");
 const CountDown : HTMLDivElement | null = document.querySelector("#CountDown");
+const ShowNumberPage : HTMLDivElement | null = document.querySelector("#ShowNumberPage");
 
 
 function TogglePageActive(div : HTMLDivElement | null)
@@ -45,7 +46,7 @@ function FillGrids(grids : boolean[][])
             grid.style.backgroundColor = grids[i][j] ? "Blue" : "Red";
             grid.style.borderRadius = "50%";
             grid.style.position = "fixed";
-            CountDown?.appendChild(grid);
+            ShowNumberPage?.appendChild(grid);
         }
     }
 }
@@ -54,7 +55,13 @@ function GameStart()
 {
     TogglePageActive(MainCanvas);
     TogglePageActive(CountDown);
-    setTimeout(() => FillGrids(grids), 3000);
+    setTimeout(() => 
+    {
+        TogglePageActive(CountDown);
+        TogglePageActive(ShowNumberPage);
+        vvpHandler.setDeadZone();
+        FillGrids(grids);
+    }, 3000);
 
 }
 

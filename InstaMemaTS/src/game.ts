@@ -82,4 +82,27 @@ class ImtGame {
         let rand = Math.random() * (upper - lower) + lower;
         return Math.floor(rand);
     }
+
+    /** Starts a round of game on supplied grids object */
+    public StartRound(grids : boolean[][])
+    {
+
+    }
+
+    /** Count the number of true grids in side a given grid */
+    public CountGrid(grids : boolean[][]) : number
+    {
+        var count : number = 0;
+        for(var x = 0; x < grids.length; x++)
+        {
+            for(var y = 0; y < grids[0].length; y++)
+            {
+                if (grids[x][y]) {
+                    count++;
+                }
+            }
+        }
+        return count;
+
+    }
 }

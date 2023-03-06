@@ -4,6 +4,9 @@ class VvpHandler {
     Height : number;
     /** The width of the viewport, in px and integer */
     Width : number;
+
+    /** Uniform radius of the number circles*/
+    Radius: number = 3;
     /**
      * Initializes a new VvpHandler instance
      * @param {VisualViewport | null} viewPort DOM VisualViewport
@@ -59,6 +62,17 @@ class VvpHandler {
         var out : string = this.Height.toFixed() + "x" + this.Width.toFixed();
         var out1 : string = this.yGrids() + "x" + this.xGrids() + "=" + this.totalGrids();
         return out + ", " + out1;
+    }
+    /** Set a deadzone by the edge by 1 circle radius */
+    public setDeadZone()
+    {
+        for(var x = this.Radius; x < this.xGrids() - this.Radius; x++)
+        {
+            for(var y = this.Radius + 2; y < this.yGrids() - this.Radius; y++)
+            {
+                grids[x][y] = true;
+            }
+        }
     }
 }
 
