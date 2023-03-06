@@ -17,14 +17,35 @@ class ImtGame {
     }
 
     private Expects : number[] = [];
+
+    private resetGuessNum(classTag : string)
+    {
+        var gN : HTMLDivElement | null = document.querySelector("div.NumericBase." + classTag);
+
+        while(gN !== null)
+        {
+            gN.classList.remove(classTag);
+            gN = document.querySelector("div.NumericBase." + classTag);
+        }
+    }
     /** Starts a round of game on supplied grids object */
     public StartRound()
     {
+        // Set all NumericBase to nothing
+
+        var classTags : string[] = ["Guess", "Wrong", "Chosen", "Correct"];
+
+        for(var i = 0; i < classTags.length; i++)
+        {
+            this.resetGuessNum(classTags[i]);
+        }
+        
         //Get the numbers to display.
         var nums : number[] = Draw(this.difficulty, this.setting.NumberSet);
 
+        this.viewPortHandler.resetGrids();
         //Below procedure selects the grids where the circles are placed in the center
-        var coords : gridCoordinate[] = this.getCoordinates(this.viewPortHandler.Grids());
+        var coords : gridCoordinate[] = this.getCoordinates(this.viewPortHandler.Grids);
 
         if(nums.length !== coords.length)
         {
@@ -93,7 +114,7 @@ class ImtGame {
 
         setTimeout(() => 
         {
-            this.StartRound((new VvpHandler()).Grids());
+            this.StartRound();
         }, 3000);
     }
 

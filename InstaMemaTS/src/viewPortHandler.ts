@@ -17,6 +17,7 @@ class VvpHandler {
             this.Height = viewPort!.height | 0;
             this.Width = viewPort!.width | 0;
             this.Grids = this.createGrids();
+            this.setDeadZone();
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -42,7 +43,11 @@ class VvpHandler {
     {
         return this.xGrids() * this.yGrids();
     }
-
+    public resetGrids()
+    {
+        this.Grids = this.createGrids();
+        this.setDeadZone();
+    }
     public createGrids() : boolean[][]
     {
         var x : number = this.xGrids();
@@ -53,6 +58,7 @@ class VvpHandler {
         for(var i = 0; i < x; i++)
         {
             result[i] = new Array<boolean>(y);
+            result[i].fill(false);
         }
         return result;
     }

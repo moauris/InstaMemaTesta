@@ -63,7 +63,6 @@ function GameStart()
     {
         TogglePageActive(CountDown);
         TogglePageActive(ShowNumberPage);
-        vvpHandler.setDeadZone();
         game.StartRound();
         if(DEBUG) FillGrids();
     }, 3000);
