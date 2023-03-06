@@ -57,11 +57,8 @@ function FillGrids()
 
 function GameStart()
 {
-    setTimeout(() => 
-    {
-        game.StartRound();
-        if(DEBUG) FillGrids();
-    }, 1500);
+    game.StartRound();
+    if(DEBUG) FillGrids();
 
 }
 

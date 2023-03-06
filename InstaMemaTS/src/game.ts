@@ -39,16 +39,34 @@ class ImtGame {
             gN = document.querySelector("div.NumericBase." + classTag);
         }
     }
+    public resetProgress()
+    {
+        var pb = document.querySelectorAll("li.HealthPoint.Filled");
+
+        for(var i = 0; i < pb.length; i++)
+        {
+            pb[i].classList.remove("Filled");
+        }
+
+    }
+    public setProgress(n : number)
+    {
+        var pb = document.querySelector("li.HealthPoint:nth-child(" + n + ")");
+        if(pb === null) return;
+        pb.classList.add("Filled");
+
+    }
     /** Starts a round of game on supplied grids object */
     public StartRound()
     {
         //Check if score board should be shown instead
         
-        if(this.setting.MaxRound === 0){
+        if(this.setting.MaxRound < this.currentRound){
             this.ShowScoreboard();
         }
         if(this.currentRound === 1)
         {
+            this.resetProgress();
             TogglePageActive(MainCanvas);
         } else {
             TogglePageActive(ShowNumberPage);
@@ -58,9 +76,8 @@ class ImtGame {
             TogglePageActive(CountDown);
             TogglePageActive(ShowNumberPage);
         }, 3000);
-
+        this.setProgress(this.currentRound);
         this.currentRound++;
-        this.setting.MaxRound--;
         // Set all NumericBase to nothing
         var classTags : string[] = ["Guess", "Wrong", "Chosen", "Correct"];
 
