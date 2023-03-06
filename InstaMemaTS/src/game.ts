@@ -56,21 +56,22 @@ class ImtGame {
         pb.classList.add("Filled");
 
     }
+
     /** Starts a round of game on supplied grids object */
-    public StartRound()
+    public StartRound(from : HTMLDivElement | null = ShowNumberPage)
     {
         //Check if score board should be shown instead
         
         if(this.setting.MaxRound < this.currentRound){
             this.ShowScoreboard();
+            return;
         }
         if(this.currentRound === 1)
         {
             this.resetProgress();
-            TogglePageActive(MainCanvas);
-        } else {
-            TogglePageActive(ShowNumberPage);
         }
+
+        TogglePageActive(from);
         TogglePageActive(CountDown);
         setTimeout(() => {
             TogglePageActive(CountDown);
@@ -133,8 +134,8 @@ class ImtGame {
         {
             throw new Error("#guessNumber_" + num + " cannot be found.")
         }
+        gN.onclick = null;
         var Ans : number | undefined = this.Expects.pop();
-        console.log("Expect " + Ans + ", answered: " + num);
         if(Ans === num)
         {
             gN.classList.remove("Guess");
@@ -149,8 +150,16 @@ class ImtGame {
             this.WrongNumbers();
         }
     }
+
     public ShowScoreboard()
     {
+        TogglePageActive(ShowNumberPage);
+        TogglePageActive(ScorePage);
+        var score = document.querySelector("h1#ScoreBoard");
+
+        if(score === null) return;
+
+        score.textContent = "" + this.currentScore;
 
     }
 
@@ -158,7 +167,7 @@ class ImtGame {
     {
         return 2 ** (this.difficulty - 3);
     }
-    //**A correct number is chosen. Mark all remaining guess items wrong and start the next round if possible */
+    //**A correct number is chosen. start the next round if possible */
     public CorrectNumbers()
     {
         var gN : HTMLDivElement | null = document.querySelector("div.NumericBase.Chosen");

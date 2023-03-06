@@ -4,11 +4,12 @@ const DEBUG : boolean = false;
 const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas");
 const CountDown : HTMLDivElement | null = document.querySelector("#CountDown");
 const ShowNumberPage : HTMLDivElement | null = document.querySelector("#ShowNumberPage");
+const ScorePage : HTMLDivElement | null = document.querySelector("#ScorePage");
 
 
 function TogglePageActive(div : HTMLDivElement | null)
 {
-    if(div === null ) return;
+    if(div === null ) throw Error("The html element is null");
     if(div.classList.contains("PageActivated"))
     {
         div.classList.remove("PageActivated");
@@ -23,7 +24,7 @@ function TogglePageActive(div : HTMLDivElement | null)
 
 
 var gameSetting = new ImtGameSetting();
-gameSetting.MaxRound = 10;
+gameSetting.MaxRound = 3;
 gameSetting.NumberSet = NumberSets.Circles;
 gameSetting.PositionSet = PositionSets.Everywhere;
 
@@ -31,7 +32,6 @@ var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
 
 var game = new ImtGame(gameSetting, vvpHandler);
 
-game.difficulty = 4;
 
 
 function FillGrids()
@@ -57,8 +57,18 @@ function FillGrids()
 
 function GameStart()
 {
-    game.StartRound();
+    game.currentRound = 1;
+    game.difficulty = 4;
+    game.StartRound(MainCanvas);
     if(DEBUG) FillGrids();
 
+}
+
+
+function restartGameClicked()
+{
+    game.difficulty = 4;
+    game.currentRound = 1;
+    game.StartRound(ScorePage);
 }
 

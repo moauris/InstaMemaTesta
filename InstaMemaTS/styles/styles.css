@@ -50,8 +50,8 @@ div.StartMenuItem {
     text-align: center;
     cursor: pointer;
     background-color: white;
-    width: 20vw;
-    margin-left: 40vw;
+    width: 40vw;
+    margin-left: 30vw;
     transition-property: font-size text-shadow;
     transition-duration: 0.5s;
 }
@@ -199,7 +199,7 @@ div.CountDownNum1 {
     animation-delay: 2s;
 }
 
-div.ShowNumberPage {
+div#ShowNumberPage {
     position: fixed;
     background-color: white;
     top: 0px;
@@ -223,6 +223,7 @@ div.NumericBase {
     user-select: none;
     display: none;
     z-index: 999;
+    
 }
 
 div.NumericBase.Show {
@@ -236,6 +237,7 @@ div.NumericBase.Guess {
     background-color: white;
     box-shadow: 1px 2px 1px lightgrey inset;
     color: transparent;
+    cursor: pointer;
     display: block;
 }
 
@@ -286,6 +288,34 @@ li.HealthPoint {
 li.HealthPoint.Filled {
     box-shadow: 0.1vw 0.1vw 0.1vw 0.05vw blue inset;
     background: linear-gradient(0.54turn, purple, #ebf8e1, orange);
+}
+
+div#CountPage {
+    width:100vw;
+    height:100vh;
+    background-color: white;
+    font-family: "Microsoft YaHei", "Microsoft JhengHei";
+}
+
+div.ScoreText {
+    position: relative;
+    text-align: center;
+    font-size: 6vw;
+    width: 30vw;
+    left: 35vw;
+    top: 40vh;
+    background-color: transparent;
+}
+
+h1.ScoreNum {
+    position: relative;
+    text-align: center;
+    font-size: 12vw;
+    width: 18vw;
+    left: 41vw;
+    top: 40vh;
+    background-color: transparent;
+    border-bottom: 6px double gray;
 }
 
 
