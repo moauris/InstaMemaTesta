@@ -99,6 +99,12 @@ class ImtGame {
         }
     }
 
+    private trySetGrid(grid : boolean[][], x : number, y : number, setAs : boolean)
+    {
+        if(x < 0 || x >= grid.length) return;
+        if(y < 0 || y >= grid[0].length) return;
+        grid[x][y] = setAs;
+    }
 
     /** Draw n-th grid from grids 
      * @param {boolean[][]} grids The grids to draw from.
@@ -142,16 +148,16 @@ class ImtGame {
             {
                 
                 if ((i**2) + (j**2) < radius**2) {
-                    grid[xy.X + i][xy.Y + j] = false;
-                    grid[xy.X - i][xy.Y + j] = false;
-                    grid[xy.X + i][xy.Y - j] = false;
-                    grid[xy.X - i][xy.Y - j] = false;
+                    this.trySetGrid(grid, xy.X + i, xy.Y + j, false);
+                    this.trySetGrid(grid, xy.X - i, xy.Y + j, false);
+                    this.trySetGrid(grid, xy.X + i, xy.Y - j, false);
+                    this.trySetGrid(grid, xy.X - i, xy.Y - j, false);
                 }
             }
-            grid[xy.X - i][xy.Y] = false;
-            grid[xy.X][xy.Y - i] = false;
-            grid[xy.X + i][xy.Y] = false;
-            grid[xy.X][xy.Y + i] = false;
+            this.trySetGrid(grid, xy.X - i, xy.Y, false);
+            this.trySetGrid(grid, xy.X, xy.Y - i, false);
+            this.trySetGrid(grid, xy.X + i, xy.Y, false);
+            this.trySetGrid(grid, xy.X, xy.Y + i, false);
 
         }
     }
