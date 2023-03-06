@@ -124,6 +124,7 @@ class ImtGame {
         }
         gN.classList.remove("Show");
         gN.classList.add("Guess");
+        //TODO: IMPROVE the event listener code
         gN.onclick = () => this.Answered(num);
     }
 
@@ -148,10 +149,6 @@ class ImtGame {
         {
             this.WrongNumbers();
         }
-        var wav = new Audio("wav/GunShotSnglShotIn_PE1097906.mp3");
-        
-        wav.play();
-        gN.removeEventListener("click", () => this.Answered(num));
     }
 
     public ShowScoreboard()
