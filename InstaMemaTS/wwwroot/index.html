@@ -11,9 +11,9 @@
         <div id="MainCanvas" class="PageActivated">
             <div id="Title"><h1><img src="./img/favicon.ico" height="128" width="128" alt="favicon"/> 瞬时记忆</h1></div>
             <div class="StartMenu">
-                <div id="Start" class="StartMenuItem" onclick="GameStart()">开始</div>
-                <div id="Readme" class="StartMenuItem">说明</div>
-                <div id="Setting" class="StartMenuItem">设置</div>
+                <div id="Start" class="StartMenuItem WiggleAnime" onclick="GameStart()">开始</div>
+                <div id="Readme" class="StartMenuItem WiggleAnime" onclick="ShowReadMe()">说明</div>
+                <div id="Setting" class="StartMenuItem WiggleAnime" onclick="ShowSettingPage()">设置</div>
             </div>
 
             <footer>2023 &copy; momi & liyucat All Rights Reserved.</footer>
@@ -104,12 +104,23 @@
                 <div class="ScoreText">最后得分</div>
                 <h1 id="ScoreBoard" class="ScoreNum">666</h1>
     
-                <div role="button" class="StartMenuItem" onclick="window.location.reload()">返回菜单</div>
-                <div role="button" class="StartMenuItem" onclick="restartGameClicked()">再来一次</div>
+                <div role="button" class="StartMenuItem WiggleAnime" onclick="window.location.reload()">返回菜单</div>
+                <div role="button" class="StartMenuItem WiggleAnime" onclick="RestartGameClicked()">再来一次</div>
     
 
             </div>
  
+        </div>
+
+        <div id="SettingPage" class="PageDeactivated">
+            <div class="SettingBox">
+                <div class="SettingText">设置</div>
+                <div class="SettingOptions">
+                    <div class="WiggleAnime">初始难度</div>
+                    <div class="WiggleAnime">回合数量</div>
+                    <div class="WiggleAnime">数字集合</div>
+                </div>
+            </div>
         </div>
     </body>
     <footer>

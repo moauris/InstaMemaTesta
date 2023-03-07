@@ -5,6 +5,7 @@ const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas")
 const CountDown : HTMLDivElement | null = document.querySelector("#CountDown");
 const ShowNumberPage : HTMLDivElement | null = document.querySelector("#ShowNumberPage");
 const ScorePage : HTMLDivElement | null = document.querySelector("#ScorePage");
+const SettingPage : HTMLDivElement | null = document.querySelector("#SettingPage");
 
 
 function TogglePageActive(div : HTMLDivElement | null)
@@ -54,10 +55,22 @@ function GameStart()
     game.StartRound(MainCanvas);
     if(DEBUG) FillGrids();
 }
-function restartGameClicked()
+function RestartGameClicked()
 {
     game.difficulty = 4;
     game.currentRound = 1;
     game.StartRound(ScorePage);
+}
+
+function ShowSettingPage()
+{
+    TogglePageActive(MainCanvas);
+    TogglePageActive(SettingPage);
+
+}
+
+function ShowReadMe()
+{
+
 }
 

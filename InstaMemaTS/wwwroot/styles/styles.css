@@ -44,30 +44,91 @@ div.StartMenu {
     background-color: white;
 }
 
+div#SettingPage {
+    width:100vw;
+    height:100vh;
+    background-color: white;
+    font-family: "Microsoft YaHei", "Microsoft JhengHei";
+}
+
+div#SettingPage > div.SettingBox {
+    position: fixed;
+    width: 40vw;
+    left: 30vw;
+    height: 1vh;
+    top: 49vh;
+    border-radius: 2vw;
+    border-style: solid;
+    border-width: 0.2vw;
+    animation: SettingBoxExtend 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
+}
+
+@keyframes SettingBoxExtend {
+    100% {
+        width: 80vw;
+        left: 10vw;
+        height: 80vh;
+        top: 10vh;
+        box-shadow: 1vw 1vw 1vw gray;
+    }
+}
+div#SettingPage div.SettingText {
+    position: fixed;
+    width: 40vw;
+    left: 30vw;
+    top: 50vh;
+    font-size: 6vw;
+    text-shadow: 5px 5px 5px gray;
+    text-align: center;
+    animation: SettingShirnkHang 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
+}
+@keyframes SettingShirnkHang {
+    100% {
+        font-size: 4vw;
+        text-shadow: none;
+        top:10vh;
+        border-bottom: 0.5vmin solid gray;
+    }
+}
+div#SettingPage div.SettingOptions {
+    margin-top: 3vmin;
+}
+div#SettingPage div.SettingOptions > div {
+    position: relative;
+    margin-top: 1vmin;
+    width: 40vw;
+    left: 20vw;
+    font-size: 2.4vw;
+    top: 10vh;
+    text-align: center;
+}
+
+
 div.StartMenuItem {
     align-content: center;
-    Font-size: 4vw;
+    Font-size: 4vmax;
     text-align: center;
-    cursor: pointer;
     background-color: white;
     width: 40vw;
     margin-left: 30vw;
     transition-property: font-size text-shadow;
     transition-duration: 0.5s;
     margin-top: 1vh;
+}
+div.WiggleAnime:nth-child(3n+1)
+{
+    animation-delay: 335ms;
+}
+div.WiggleAnime:nth-child(3n+2)
+{
+    animation-delay: 178ms;
+}
+div.WiggleAnime {
     animation-name:Wiggle;
     animation-duration: 1s; 
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-direction: normal;
-}
-div.StartMenuItem:nth-child(2)
-{
-    animation-delay: 335ms;
-}
-div.StartMenuItem:nth-child(3)
-{
-    animation-delay: 178ms;
 }
 
 @keyframes Wiggle{
@@ -93,8 +154,9 @@ div.StartMenuItem:nth-child(3)
         transform: translateX(0px)
     }
 }
-div.StartMenuItem:hover {
-    font-size: 6vw;
+div.WiggleAnime:hover {
+    cursor: pointer;
+    font-size: 6vmax;
     text-shadow: 5px 5px 5px gray;
     animation-name: none;
 }
