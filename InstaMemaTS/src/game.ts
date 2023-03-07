@@ -42,12 +42,10 @@ class ImtGame {
     public resetProgress()
     {
         var pb = document.querySelectorAll("li.HealthPoint.Filled");
-
         for(var i = 0; i < pb.length; i++)
         {
             pb[i].classList.remove("Filled");
         }
-
     }
     public setProgress(n : number)
     {
@@ -61,7 +59,6 @@ class ImtGame {
     public StartRound(from : HTMLDivElement | null = ShowNumberPage)
     {
         //Check if score board should be shown instead
-        
         if(this.setting.MaxRound < this.currentRound){
             this.ShowScoreboard();
             return;
@@ -70,7 +67,6 @@ class ImtGame {
         {
             this.resetProgress();
         }
-
         TogglePageActive(from);
         TogglePageActive(CountDown);
         setTimeout(() => {
@@ -81,15 +77,12 @@ class ImtGame {
         this.currentRound++;
         // Set all NumericBase to nothing
         var classTags : string[] = ["Guess", "Wrong", "Chosen", "Correct"];
-
         for(var i = 0; i < classTags.length; i++)
         {
             this.resetGuessNum(classTags[i]);
         }
-        
         //Get the numbers to display.
         var nums : number[] = Draw(this.difficulty, this.setting.NumberSet);
-
         this.viewPortHandler.resetGrids();
         //Below procedure selects the grids where the circles are placed in the center
         var coords : gridCoordinate[] = this.getCoordinates(this.viewPortHandler.Grids);
@@ -112,9 +105,6 @@ class ImtGame {
             }
         }, 4000);
     }
-
-
-
     public HideNumber(num : number)
     {
         var gN : HTMLDivElement | null = document.querySelector("div#guessNumber_" + num);
@@ -162,7 +152,6 @@ class ImtGame {
         score.textContent = "" + this.currentScore;
 
     }
-
     private scored() : number
     {
         return 2 ** (this.difficulty - 3);
@@ -182,9 +171,8 @@ class ImtGame {
         setTimeout(() => 
         {
             this.StartRound();
-        }, 3000);
+        }, 1000);
     }
-
     //**A wrong number is chosen. Mark all remaining guess items wrong and start the next round if possible */
     public WrongNumbers()
     {
@@ -200,9 +188,8 @@ class ImtGame {
         setTimeout(() => 
         {
             this.StartRound();
-        }, 3000);
+        }, 1000);
     }
-
     /**Show a number on a location on the viewport depending on the number supplied and grid coordinate
      * @param {number} num A number between 0 and 9.
      * @param {gridCoordinate} center Determines where to put the number div.
@@ -216,10 +203,9 @@ class ImtGame {
         }
         gN.classList.add("Show");
 
-        gN.style.top = center.Y * 20 - 60 + "px";
-        gN.style.left = center.X * 20 - 60 + "px";
+        gN.style.top = center.Y * this.setting.PixelsPerGrid - 60 + "px";
+        gN.style.left = center.X * this.setting.PixelsPerGrid - 60 + "px";
     }
-
     private getCoordinates(grids : boolean[][]) : gridCoordinate[]
     {
         var coords : gridCoordinate[] = [];
@@ -239,16 +225,12 @@ class ImtGame {
 
         return coords;
     }
-
-
-
     private trySetGrid(grid : boolean[][], x : number, y : number, setAs : boolean)
     {
         if(x < 0 || x >= grid.length) return;
         if(y < 0 || y >= grid[0].length) return;
         grid[x][y] = setAs;
     }
-
     /** Draw n-th grid from grids 
      * @param {boolean[][]} grids The grids to draw from.
      * @param {number} draw nth grid
@@ -270,9 +252,7 @@ class ImtGame {
                 }
             }
         }
-
         return null;
-
     }
     /** Marks a circle by making a center at xy false on a grid area with radius 
      * @param {gridCoordinate} xy The center of the cicle

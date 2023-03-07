@@ -20,20 +20,13 @@ function TogglePageActive(div : HTMLDivElement | null)
         div.classList.add("PageActivated");
     }
 }
-
-
-
 var gameSetting = new ImtGameSetting();
 gameSetting.MaxRound = 3;
 gameSetting.NumberSet = NumberSets.Circles;
 gameSetting.PositionSet = PositionSets.Everywhere;
-
-var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
-
+gameSetting.PixelsPerGrid = 20;
+var vvpHandler : VvpHandler = new VvpHandler(visualViewport, gameSetting);
 var game = new ImtGame(gameSetting, vvpHandler);
-
-
-
 function FillGrids()
 {
     var x : number = vvpHandler.Grids.length;
@@ -43,8 +36,8 @@ function FillGrids()
         for(var j = 0; j < y; j++)
         {
             var grid : HTMLDivElement = document.createElement("div");
-            grid.style.top = j * 20 + "px";
-            grid.style.left = i * 20 + "px";
+            grid.style.top = j * gameSetting.PixelsPerGrid + "px";
+            grid.style.left = i * gameSetting.PixelsPerGrid + "px";
             grid.style.width = "20px";
             grid.style.height = "20px";
             grid.style.backgroundColor = vvpHandler.Grids[i][j] ? "Blue" : "Red";
@@ -54,17 +47,13 @@ function FillGrids()
         }
     }
 }
-
 function GameStart()
 {
     game.currentRound = 1;
     game.difficulty = 4;
     game.StartRound(MainCanvas);
     if(DEBUG) FillGrids();
-
 }
-
-
 function restartGameClicked()
 {
     game.difficulty = 4;

@@ -4,7 +4,7 @@ class ImtGameSetting{
     MaxRound : number = 10;
     NumberSet : NumberSets = NumberSets.Full;
     PositionSet : PositionSets = PositionSets.Everywhere;
-
+    PixelsPerGrid : number = 20;
 
 }
 

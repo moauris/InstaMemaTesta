@@ -5,6 +5,7 @@ class VvpHandler {
     /** The width of the viewport, in px and integer */
     Width : number;
 
+    Setting : ImtGameSetting;
     /** Uniform radius of the number circles*/
     Radius: number = 3;
 
@@ -13,9 +14,10 @@ class VvpHandler {
      * Initializes a new VvpHandler instance
      * @param {VisualViewport | null} viewPort DOM VisualViewport
      */
-    constructor(viewPort : VisualViewport | null) {
+    constructor(viewPort : VisualViewport | null, setting : ImtGameSetting) {
             this.Height = viewPort!.height | 0;
             this.Width = viewPort!.width | 0;
+            this.Setting = setting;
             this.Grids = this.createGrids();
             this.setDeadZone();
     }
@@ -25,7 +27,7 @@ class VvpHandler {
      */
     public xGrids() : number
     {
-        return (this.Width / 20) | 0;
+        return (this.Width / this.Setting.PixelsPerGrid) | 0;
     }
     /**
      * Get the number of grid or blocks can be placed vertically
@@ -33,7 +35,7 @@ class VvpHandler {
      */
     public yGrids() : number
     {
-        return (this.Height / 20) | 0;
+        return (this.Height / this.Setting.PixelsPerGrid) | 0;
     }
     /**
      * Get the total number of grids or blocks on the screen
