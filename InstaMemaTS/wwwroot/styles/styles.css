@@ -108,7 +108,7 @@ div#SettingPage div.SettingOptions > div.Options.Selected {
     cursor: auto;
 }
 
-div#SettingPage div.SettingOptions > div.OptionsFold.Folded {
+div#SettingPage div.SettingOptions > div.OptionsFold {
     position: relative;
     margin-top: 1vmin;
     width: 60vw;
@@ -123,6 +123,7 @@ div#SettingPage div.SettingOptions > div.OptionsFold.Folded {
 
 div.OptionButtonBox {
     margin: 0.5em;
+    display: block;
 }
 
 span.OptionButton {
@@ -149,7 +150,6 @@ span.OptionButton:nth-child(2) {
     animation-name: Burning;
     animation-duration: 1s;
 }
-
 span.OptionButton:hover {
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-direction: normal;
@@ -163,7 +163,6 @@ span.OptionButton:hover {
         background-position: 0em 4em;
     }
 }
-
 @keyframes Burning {
     0% {
         background-position: 0em 4em;
@@ -172,7 +171,28 @@ span.OptionButton:hover {
         background-position: 0em 0em;
     }
 }
-
+div.OptionCardBox {
+    margin: 0.5em;
+    display: flex;
+    width: 60vmax;
+}
+div.OptionCard {
+    color: black;
+    width: 22vmax;
+    height: 5vmax;
+    font-size: 1em;
+    border-radius: 1em;
+    border-style: solid;
+    margin: 1em;
+    padding: 0em 1em;
+    cursor: pointer;
+}
+div.OptionCard:nth-child(1){
+    float: left;
+}
+div.OptionCard:nth-child(2){
+    float: right;
+}
 div.StartMenuItem {
     align-content: center;
     Font-size: 4vmax;
