@@ -93,16 +93,85 @@ div#SettingPage div.SettingText {
 div#SettingPage div.SettingOptions {
     margin-top: 3vmin;
 }
-div#SettingPage div.SettingOptions > div {
+div#SettingPage div.SettingOptions > div.Options {
     position: relative;
     margin-top: 1vmin;
     width: 40vw;
     left: 20vw;
-    font-size: 2.4vw;
+    font-size: 2.4vmax;
     top: 10vh;
     text-align: center;
 }
+div#SettingPage div.SettingOptions > div.Options.Selected {
+    text-shadow: 5px 5px 5px gray;
+    animation-name: none;
+    cursor: auto;
+}
 
+div#SettingPage div.SettingOptions > div.OptionsFold.Folded {
+    position: relative;
+    margin-top: 1vmin;
+    width: 60vw;
+    left: 10vw;
+    font-size: 1em;
+    top: 10vh;
+    text-align: center;
+    border-radius: 0.5em;
+    border-color: gray;
+    border-style: dotted;
+}
+
+div.OptionButtonBox {
+    margin: 0.5em;
+}
+
+span.OptionButton {
+    color: black;
+    font-weight: 600;
+    font-size: 1.4em;
+    border-radius: 1em;
+    border-style: solid;
+    margin: 1em;
+    padding: 0em 1em;
+    cursor: pointer;
+}
+span.OptionButton:nth-child(1) {
+    box-shadow: 1px 1px 5px white inset;
+    border-color: darkblue;
+    background: linear-gradient(0.5turn, aqua, white, aqua) ;
+    animation-name: Cooling;
+    animation-duration: 3s;
+}
+span.OptionButton:nth-child(2) {
+    box-shadow: 1px 1px 5px white inset;
+    border-color: darkred;
+    background: linear-gradient(0.5turn, yellow, red, yellow);
+    animation-name: Burning;
+    animation-duration: 1s;
+}
+
+span.OptionButton:hover {
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+@keyframes Cooling {
+    0% {
+        background-position: 0em 0em;
+    }
+    100%{
+        background-position: 0em 4em;
+    }
+}
+
+@keyframes Burning {
+    0% {
+        background-position: 0em 4em;
+    }
+    100%{
+        background-position: 0em 0em;
+    }
+}
 
 div.StartMenuItem {
     align-content: center;
@@ -124,6 +193,7 @@ div.WiggleAnime:nth-child(3n+2)
     animation-delay: 178ms;
 }
 div.WiggleAnime {
+    cursor: pointer;
     animation-name:Wiggle;
     animation-duration: 1s; 
     animation-fill-mode: forwards;
@@ -155,7 +225,6 @@ div.WiggleAnime {
     }
 }
 div.WiggleAnime:hover {
-    cursor: pointer;
     font-size: 6vmax;
     text-shadow: 5px 5px 5px gray;
     animation-name: none;

@@ -1,4 +1,7 @@
-/** Represents one Insta Mema Testa Game Session */
+/** Represents one Insta Mema Testa Game Session 
+ * @param {ImtGameSetting} setting The Current Game Setting
+ * 
+*/
 class ImtGame {
     setting : ImtGameSetting;
     viewPortHandler : VvpHandler;
