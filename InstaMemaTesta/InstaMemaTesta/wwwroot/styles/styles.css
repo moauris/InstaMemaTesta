@@ -1,0 +1,364 @@
+* {
+    margin: 0px;
+}
+
+.PageActivated {
+    display: block;
+}
+
+.PageDeactivated {
+    display: none;
+}
+div#CountDown {
+    width:100vw;
+    height:100vh;
+}
+div#MainCanvas {
+    width:100vw;
+    height:100vh;
+    background-color: white;
+    font-family: "Microsoft YaHei", "Microsoft JhengHei";
+}
+
+div#MainCanvas footer {
+    position: fixed;
+    top: 94vh;
+    left: 35vw;
+    width: 30vw;
+    height: 6vh;
+    text-align: center;
+    font-size: 11px;
+}
+
+div#Title {
+    background-color: white;
+    text-align: center;
+}
+div#Title > h1{
+    font-size: 10vw;
+}
+
+div.StartMenu {
+    display: block;
+    margin-top: 5vh;
+    background-color: white;
+}
+
+div.StartMenuItem {
+    align-content: center;
+    Font-size: 4vw;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    width: 40vw;
+    margin-left: 30vw;
+    transition-property: font-size text-shadow;
+    transition-duration: 0.5s;
+    margin-top: 1vh;
+    animation-name:Wiggle;
+    animation-duration: 1s; 
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+div.StartMenuItem:nth-child(2)
+{
+    animation-delay: 335ms;
+}
+div.StartMenuItem:nth-child(3)
+{
+    animation-delay: 178ms;
+}
+
+@keyframes Wiggle{
+    0% {
+        transform: translateX(0px)
+    }
+    58% {
+        transform: translateX(0px)
+    }
+    70% {
+        transform: translateX(4px)
+    }
+    82% {
+        transform: translateX(-4px)
+    }
+    90% {
+        transform: translateX(2px)
+    }
+    95% {
+        transform: translateX(-2px)
+    }
+    100% {
+        transform: translateX(0px)
+    }
+}
+div.StartMenuItem:hover {
+    font-size: 6vw;
+    text-shadow: 5px 5px 5px gray;
+    animation-name: none;
+}
+
+div.SunrayBase {
+    height: 5vh;
+    width: 2vh;
+    background-color: black;
+    position:fixed;
+    top:46vh;
+    left:50vw;
+    transform-origin: 0.5vh 15vh;
+    animation-name: SunrayDisperse;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 3;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in-out;
+    opacity: 0;
+}
+div.Sunray0 {
+    transform: translate(0px, -17vh) rotate(0deg);
+    animation-delay: 0ms;
+}
+div.Sunray1 {
+    transform: translate(0px, -17vh) rotate(18deg);
+    
+    animation-delay: 40ms;
+}
+div.Sunray2 {
+    transform: translate(0px, -17vh) rotate(36deg);
+    animation-delay: 80ms;
+}
+div.Sunray3 {
+    transform: translate(0px, -17vh) rotate(54deg);
+    animation-delay: 120ms;
+}
+div.Sunray4 {
+    transform: translate(0px, -17vh) rotate(72deg);
+    animation-delay: 160ms;
+}
+div.Sunray5 {
+    transform: translate(0px, -17vh) rotate(90deg);
+    animation-delay: 180ms;
+}
+div.Sunray6 {
+    transform: translate(0px, -17vh) rotate(108deg);
+    animation-delay: 220ms;
+}
+div.Sunray7 {
+    transform: translate(0px, -17vh) rotate(126deg);
+    animation-delay: 260ms;
+}
+div.Sunray8 {
+    transform: translate(0px, -17vh) rotate(144deg);
+    animation-delay: 300ms;
+}
+div.Sunray9 {
+    transform: translate(0px, -17vh) rotate(162deg);
+    animation-delay: 340ms;
+}
+div.Sunray10 {
+    transform: translate(0px, -17vh) rotate(180deg);
+    animation-delay: 380ms;
+}
+div.Sunray11 {
+    transform: translate(0px, -17vh) rotate(198deg);
+    animation-delay: 440ms;
+}
+div.Sunray12 {
+    transform: translate(0px, -17vh) rotate(216deg);
+    animation-delay: 480ms;
+}
+div.Sunray13 {
+    transform: translate(0px, -17vh) rotate(234deg);
+    animation-delay: 520ms;
+}
+div.Sunray14 {
+    transform: translate(0px, -17vh) rotate(252deg);
+    animation-delay: 560ms;
+}
+div.Sunray15 {
+    transform: translate(0px, -17vh) rotate(270deg);
+    animation-delay: 600ms;
+}
+div.Sunray16 {
+    transform: translate(0px, -17vh) rotate(288deg);
+    animation-delay: 640ms;
+}
+div.Sunray17 {
+    transform: translate(0px, -17vh) rotate(306deg);
+    animation-delay: 680ms;
+}
+div.Sunray18 {
+    transform: translate(0px, -17vh) rotate(324deg);
+    animation-delay: 720ms;
+}
+div.Sunray19 {
+    transform: translate(0px, -17vh) rotate(342deg);
+    animation-delay: 760ms;
+}
+div.Sunray20 {
+    transform: translate(0px, -17vh) rotate(0deg);
+    animation-delay: 800ms;
+}
+
+@keyframes SunrayDisperse {
+    0% {
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+div.CountDownNumBase {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12vh;
+    position:fixed;
+    width:12vw;
+    height:12vh;
+    top:38vh;
+    left:44vw;
+    opacity: 0;
+    background-color: transparent;
+    animation-name: SunrayDisperse;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in-out;
+}
+
+div.CountDownNum3 {
+    animation-delay: 0s;
+}
+div.CountDownNum2 {
+    animation-delay: 1s;
+}
+div.CountDownNum1 {
+    animation-delay: 2s;
+}
+
+div#ShowNumberPage {
+    position: fixed;
+    background-color: white;
+    top: 0px;
+    height: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+div.NumericBase {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border-color: blue;
+    border-width: 5px;
+    border-style: solid;
+    font-size: 110px;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+    display: none;
+    z-index: 999;
+    pointer-events: none;
+    
+}
+
+div.NumericBase.Show {
+    background-color: white;
+    border-color:transparent;
+    display: block;
+}
+
+div.NumericBase.Guess {
+    border-color: black;
+    background-color: white;
+    box-shadow: 1px 2px 1px lightgrey inset;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    pointer-events: all;
+}
+
+div.NumericBase.Chosen {
+    background-color: darkblue;
+    color: white;
+    display: block;
+}
+
+div.NumericBase.Correct {
+    background-color: lightgreen;
+    border-color: darkgreen;
+    color: black;
+    display: block;
+}
+
+div.NumericBase.Wrong {
+    background-color: red;
+    border-color: pink;
+    color: white;
+    display: block;
+}
+
+div#HealthBar {
+    top: 5px;
+    width:50vw;
+    left:25vw;
+    background-color: yellow;
+    position:fixed;
+}
+div#HealthBar > ul {
+    position:fixed;
+}
+
+li.HealthPoint {
+    float: left;
+    list-style-type: none;
+    margin-left: 0.5vw;
+    border-radius: 0.6vw;
+    border-width: 0.2vw;
+    border-color: black;
+    border-style: solid;
+    background-color: transparent;
+    width: 3.4vw;
+    height: 1.7vw;
+}
+
+li.HealthPoint.Filled {
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.05vw blue inset;
+    background: linear-gradient(0.54turn, purple, #ebf8e1, orange);
+}
+
+div#CountPage {
+    width:100vw;
+    height:100vh;
+    background-color: white;
+    font-family: "Microsoft YaHei", "Microsoft JhengHei";
+}
+
+div.ScoreText {
+    position: fixed;
+    text-align: center;
+    font-size: 6vw;
+    width: 30vw;
+    left: 35vw;
+    top: 35vh;
+    background-color: transparent;
+}
+
+h1.ScoreNum {
+    position: fixed;
+    text-align: center;
+    font-size: 12vw;
+    width: 18vw;
+    left: 41vw;
+    top: 48vh;
+    background-color: transparent;
+    border-bottom: 6px double gray;
+}
+
+
+
+
