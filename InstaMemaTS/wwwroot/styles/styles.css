@@ -60,11 +60,15 @@ div#SettingPage > div.SettingBox {
     border-radius: 2vw;
     border-style: solid;
     border-width: 0.2vw;
+    background-color: yellow;
+    z-index: 0;
     animation: SettingBoxExtend 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
 }
 
 @keyframes SettingBoxExtend {
     100% {
+        
+        z-index: 120;
         width: 80vw;
         left: 10vw;
         height: 80vh;
@@ -91,16 +95,35 @@ div#SettingPage div.SettingText {
     }
 }
 div#SettingPage div.SettingOptions {
-    margin-top: 3vmin;
+    position: absolute;
+    margin-top: 6vmax;
 }
 div#SettingPage div.SettingOptions > div.Options {
     position: relative;
-    margin-top: 1vmin;
-    width: 40vw;
-    left: 20vw;
+    /*background-color: rgba(255, 165, 65, 0.5); */
+    top: 0em;
+    background-color: white;
+    width: 66vw;
+    left: 7vw;
     font-size: 2.4vmax;
-    top: 10vh;
     text-align: center;
+}
+div#SettingPage div.SettingOptions > div.Options:nth-child(1)
+{
+    z-index: 55;
+}
+div#SettingPage div.SettingOptions > div.Options:nth-child(2)
+{
+    z-index: 54;
+}
+div#SettingPage div.SettingOptions > div.Options:nth-child(3)
+{
+    z-index: 53;
+}
+div#SettingPage div.SettingOptions > div.Options.OptionsDrap {
+    z-index: 52;
+    /*background-color: rgba(255, 165, 0, 0.5); */
+    background-color: white;
 }
 div#SettingPage div.SettingOptions > div.Options.Selected {
     text-shadow: 5px 5px 5px gray;
@@ -108,17 +131,30 @@ div#SettingPage div.SettingOptions > div.Options.Selected {
     cursor: auto;
 }
 
+div#SettingPage div.SettingOptions > div.Options.Selected + div {
+    display: block;
+}
+
 div#SettingPage div.SettingOptions > div.OptionsFold {
     position: relative;
     margin-top: 1vmin;
+    margin-bottom: 2vmin;
     width: 60vw;
     left: 10vw;
+    height: 0;
     font-size: 1em;
-    top: 10vh;
     text-align: center;
     border-radius: 0.5em;
     border-color: gray;
     border-style: dotted;
+    display: none;
+    animation: ExpandOptionFold 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
+}
+
+@keyframes ExpandOptionFold {
+    100% {
+        height: auto;
+    }
 }
 
 div.OptionButtonBox {

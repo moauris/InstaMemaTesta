@@ -74,3 +74,15 @@ function ShowReadMe()
 
 }
 
+function expandOptionClicked(divOption : HTMLDivElement)
+{
+    var OptionsSelected : HTMLDivElement | null = document.querySelector("div.Options.Selected");
+    while(OptionsSelected !== null)
+    {
+        OptionsSelected.classList.remove("Selected");
+        OptionsSelected = document.querySelector("div.Options.Selected");
+    }
+
+    divOption.classList.add("Selected");
+}
+
