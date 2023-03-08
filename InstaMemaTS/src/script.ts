@@ -108,6 +108,36 @@ function optAdjustClicked(choice : HTMLElement)
     }
     
 }
+var holdOptIntervalId = 0;
+function optAdjustHeld(choice : HTMLElement)
+{
+    var opt : string = choice.id;
+    var callback : Function | null = null;
+    switch (opt) {
+        case "diff_inc":
+            callback = () => game.setting.StartDifficulty += 1;
+            break;
+        case "diff_dec":
+            callback = () => game.setting.StartDifficulty -= 1;
+            break;
+        case "round_inc":
+            callback = () => game.setting.MaxRound += 1;
+        break;
+        case "round_dec":
+            callback = () => game.setting.MaxRound -= 1;
+        break;
+        default:
+            break;
+    }
+    if(callback !== null)
+    holdOptIntervalId = setInterval(callback, 100);
+
+}
+
+function optAdjustRelease()
+{
+    clearInterval(holdOptIntervalId);
+}
 
 function exitSetting() 
 {

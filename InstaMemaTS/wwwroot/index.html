@@ -124,8 +124,9 @@
                         <p>难度代表每回合会提供多少数字进行记忆和选择</p>
 
                         <div class="OptionButtonBox">
-                            <span id="diff_dec" class="OptionButton" onclick="optAdjustClicked(this)">减少</span>
-                            <span id="diff_inc" class="OptionButton" onclick="optAdjustClicked(this)">增加</span>
+                            <span id="diff_dec" class="OptionButton" onclick="optAdjustClicked(this)"
+                            onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">减少</span>
+                            <span id="diff_inc" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">增加</span>
                         </div>
                     </div>
                     <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">回合数量： <span id="maxRoundTx">6</span></div>
@@ -133,8 +134,8 @@
                         <p>进行多少回合的测试，可以选择一个 6 到 10 之间的任意整数</p>
 
                         <div class="OptionButtonBox">
-                            <span id="round_dec" class="OptionButton" onclick="optAdjustClicked(this)">减少</span>
-                            <span id="round_inc" class="OptionButton" onclick="optAdjustClicked(this)">增加</span>
+                            <span id="round_dec" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">减少</span>
+                            <span id="round_inc" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">增加</span>
                         </div>
                     </div>
                     <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">数字集合： <span id="numSetTx"></span></div>
