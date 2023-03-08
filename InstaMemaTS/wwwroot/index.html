@@ -106,7 +106,7 @@
                 <div class="ScoreText">最后得分</div>
                 <h1 id="ScoreBoard" class="ScoreNum">666</h1>
     
-                <div role="button" class="StartMenuItem WiggleAnime" onclick="window.location.reload()">返回菜单</div>
+                <div role="button" class="StartMenuItem WiggleAnime" onclick="ReturnToMenuClicked()">返回菜单</div>
                 <div role="button" class="StartMenuItem WiggleAnime" onclick="RestartGameClicked()">再来一次</div>
     
 
@@ -131,7 +131,7 @@
                     </div>
                     <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">回合数量： <span id="maxRoundTx">6</span></div>
                     <div class="OptionsFold">
-                        <p>进行多少回合的测试，可以选择一个 6 到 10 之间的任意整数</p>
+                        <p>进行多少回合的测试，可以选择一个 3 到 10 之间的任意整数</p>
 
                         <div class="OptionButtonBox">
                             <span id="round_dec" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">减少</span>

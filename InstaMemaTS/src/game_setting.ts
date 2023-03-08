@@ -1,6 +1,6 @@
 /** High level game settings 
  * @property {number} StartDifficulty The difficulty for the initial round, can be any whole number between 4 - 10.
- * @property {number} MaxRound Determines how many rounds the game will last, can be any whole number between 6 - 10.
+ * @property {number} MaxRound Determines how many rounds the game will last, can be any whole number between 3 - 10.
  * @property {NumberSets} Numberset Determines which numbers to draw every round.
 */
 class ImtGameSetting{
@@ -53,7 +53,7 @@ class ImtGameSetting{
         return this.maxRound;
     }
     public set MaxRound(v : number) {
-        if(v < 6 || v > 10) return;
+        if(v < 3 || v > 10) return;
 
         this.maxRound = v | 0;
         var sp = document.querySelector("span#maxRoundTx");

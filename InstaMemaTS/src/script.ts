@@ -51,6 +51,12 @@ function GameStart()
     game.StartRound(MainCanvas);
     if(DEBUG) FillGrids();
 }
+function ReturnToMenuClicked()
+{
+    game.currentRound = 1;
+    TogglePageActive(ScorePage);
+    TogglePageActive(MainCanvas);
+}
 function RestartGameClicked()
 {
     game.currentRound = 1;
