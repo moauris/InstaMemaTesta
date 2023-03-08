@@ -1,4 +1,4 @@
-const DEBUG : boolean = false;
+const DEBUG : boolean = true;
 
 
 const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas");
@@ -23,33 +23,12 @@ function TogglePageActive(div : HTMLDivElement | null)
 }
 var gameSetting = new ImtGameSetting();
 
-var vvpHandler : VvpHandler = new VvpHandler(visualViewport, gameSetting);
+var vvpHandler : VvpHandler = new VvpHandler(visualViewport);
 var game = new ImtGame(gameSetting, vvpHandler);
-function FillGrids()
-{
-    var x : number = vvpHandler.Grids.length;
-    var y : number = vvpHandler.Grids[0].length;
-    for(var i = 0; i < x; i++)
-    {
-        for(var j = 0; j < y; j++)
-        {
-            var grid : HTMLDivElement = document.createElement("div");
-            grid.style.top = j * gameSetting.PixelsPerGrid + "px";
-            grid.style.left = i * gameSetting.PixelsPerGrid + "px";
-            grid.style.width = "20px";
-            grid.style.height = "20px";
-            grid.style.backgroundColor = vvpHandler.Grids[i][j] ? "Blue" : "Red";
-            grid.style.borderRadius = "50%";
-            grid.style.position = "fixed";
-            ShowNumberPage?.appendChild(grid);
-        }
-    }
-}
 function GameStart()
 {
     game.currentRound = 1;
     game.StartRound(MainCanvas);
-    if(DEBUG) FillGrids();
 }
 function ReturnToMenuClicked()
 {
@@ -72,7 +51,7 @@ function ShowSettingPage()
 
 function ShowReadMe()
 {
-
+    throw new Error("ShowReadMe(): NotImplemented");
 }
 
 function expandOptionClicked(divOption : HTMLDivElement)

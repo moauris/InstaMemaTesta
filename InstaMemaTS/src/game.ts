@@ -58,7 +58,9 @@ class ImtGame {
 
     }
 
-    /** Starts a round of game on supplied grids object */
+    /** Starts a round of game on supplied grids object 
+     * @param {HTMLDivElement | null} from Optional. Which page did we started the game. Default is ShowNumberPage.
+    */
     public StartRound(from : HTMLDivElement | null = ShowNumberPage)
     {
         //Check if score board should be shown instead
@@ -67,7 +69,6 @@ class ImtGame {
             return;
         }
         //start the game
-        
         if(this.currentRound === 1)
         {
             //special handling for 1st round
@@ -109,7 +110,11 @@ class ImtGame {
         this.viewPortHandler.resetGrids();
         //Below procedure selects the grids where the circles are placed in the center
         var coords : gridCoordinate[] = this.getCoordinates(this.viewPortHandler.Grids);
-
+        if(DEBUG) 
+        {
+            this.viewPortHandler.clearGrids();
+            this.viewPortHandler.fillGrids();
+        }
         if(nums.length !== coords.length)
         {
             throw new Error("The number of draws mismatch grids available: num, grid = (" + nums.length + ", " + coords.length + ")");

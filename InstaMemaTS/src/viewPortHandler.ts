@@ -4,8 +4,8 @@ class VvpHandler {
     Height : number;
     /** The width of the viewport, in px and integer */
     Width : number;
-
-    Setting : ImtGameSetting;
+    /**Pixels per Grid. Determines how many pixels represents a grid. */
+    Ppg : number;
     /** Uniform radius of the number circles*/
     Radius: number = 3;
 
@@ -14,12 +14,19 @@ class VvpHandler {
      * Initializes a new VvpHandler instance
      * @param {VisualViewport | null} viewPort DOM VisualViewport
      */
-    constructor(viewPort : VisualViewport | null, setting : ImtGameSetting) {
+    constructor(viewPort : VisualViewport | null) {
             this.Height = viewPort!.height | 0;
             this.Width = viewPort!.width | 0;
-            this.Setting = setting;
+            this.Ppg = 20;
+            if(DEBUG) console.log("ctor::VvpHandler: There are " + this.totalGrids() + "under current viewport.");
             this.Grids = this.createGrids();
+            
+            
             this.setDeadZone();
+            if(DEBUG) {
+                this.clearGrids();
+                this.fillGrids();
+            }
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -27,7 +34,7 @@ class VvpHandler {
      */
     public xGrids() : number
     {
-        return (this.Width / this.Setting.PixelsPerGrid) | 0;
+        return (this.Width / this.Ppg) | 0;
     }
     /**
      * Get the number of grid or blocks can be placed vertically
@@ -35,7 +42,7 @@ class VvpHandler {
      */
     public yGrids() : number
     {
-        return (this.Height / this.Setting.PixelsPerGrid) | 0;
+        return (this.Height / this.Ppg) | 0;
     }
     /**
      * Get the total number of grids or blocks on the screen
@@ -48,6 +55,10 @@ class VvpHandler {
     public resetGrids()
     {
         this.Grids = this.createGrids();
+        if(DEBUG) {
+            this.clearGrids();
+            this.fillGrids();
+        }
         this.setDeadZone();
     }
     public createGrids() : boolean[][]
@@ -62,6 +73,7 @@ class VvpHandler {
             result[i] = new Array<boolean>(y);
             result[i].fill(false);
         }
+
         return result;
     }
     /**
@@ -84,6 +96,38 @@ class VvpHandler {
                 this.Grids[x][y] = true;
             }
         }
+    }
+    public fillGrids()
+    {
+        var x : number = this.Grids.length;
+        var y : number = this.Grids[0].length;
+        for(var i = 0; i < x; i++)
+        {
+            for(var j = 0; j < y; j++)
+            {
+                var grid : HTMLDivElement = document.createElement("div");
+                grid.style.top = j * this.Ppg + "px";
+                grid.style.left = i * this.Ppg + "px";
+                grid.style.width = this.Ppg + "px";
+                grid.style.height = this.Ppg + "px";
+                grid.style.backgroundColor = this.Grids[i][j] ? "Blue" : "Red";
+                grid.style.borderRadius = "50%";
+                grid.style.position = "fixed";
+                grid.classList.add("debugGridDots");
+                ShowNumberPage?.appendChild(grid);
+            }
+        }
+    }
+    public clearGrids()
+    {
+        var grids : NodeListOf<HTMLDivElement> | null = document.querySelectorAll("div.debugGridDots");
+        if(grids === null) return;
+
+        for(var i = 0; i < grids.length; i++)
+        {
+            ShowNumberPage?.removeChild(grids[i]);
+        }
+
     }
 }
 
