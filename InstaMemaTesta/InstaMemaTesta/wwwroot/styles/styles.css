@@ -22,12 +22,12 @@ div#MainCanvas {
 
 div#MainCanvas footer {
     position: fixed;
-    top: 94vh;
+    top: 92vh;
     left: 35vw;
     width: 30vw;
     height: 6vh;
     text-align: center;
-    font-size: 11px;
+    font-size: 1em;
 }
 
 div#Title {
