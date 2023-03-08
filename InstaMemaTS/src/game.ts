@@ -73,6 +73,21 @@ class ImtGame {
             //special handling for 1st round
             this.resetProgress();
             this.difficulty = this.setting.StartDifficulty;
+            //Create ul li.HealthPoint
+            var ul : HTMLUListElement = document.createElement("ul");
+            for(var i = 0; i < this.setting.MaxRound; i++)
+            {
+                var li : HTMLLIElement = document.createElement("li");
+                li.classList.add("HealthPoint");
+                ul.appendChild(li);
+            }
+            var HealthBar : HTMLDivElement | null = document.querySelector("div#HealthBar");
+            if(HealthBar === null)
+            {
+                throw new Error("div#HealthBar not found");
+            }
+            HealthBar.innerHTML = "";
+            HealthBar.appendChild(ul);
         }
         TogglePageActive(from);
         TogglePageActive(CountDown);
