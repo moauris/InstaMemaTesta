@@ -99,6 +99,12 @@ function optAdjustClicked(choice : HTMLElement)
         case "round_dec":
             game.setting.MaxRound -= 1;
         break;
+        case "numset1":
+            game.setting.NumberSet = NumberSets.Full;
+        break;
+        case "numset2":
+            game.setting.NumberSet = NumberSets.Circles;
+        break;
         default:
             break;
     }

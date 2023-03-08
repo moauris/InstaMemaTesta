@@ -171,6 +171,7 @@ span.OptionButton {
     margin: 1em;
     padding: 0em 1em;
     cursor: pointer;
+    user-select: none;
 }
 span.OptionButton:nth-child(1) {
     box-shadow: 1px 1px 5px white inset;
@@ -213,15 +214,23 @@ div.OptionCardBox {
     width: 60vmax;
 }
 div.OptionCard {
-    color: black;
+    color: rgb(75, 71, 71);
+    background-color: beige;
     width: 22vmax;
-    height: 5vmax;
+    height: 6vmax;
     font-size: 1em;
     border-radius: 1em;
     border-style: solid;
+    border-width: 0em;
     margin: 1em;
     padding: 0em 1em;
     cursor: pointer;
+    user-select: none;
+}
+div.OptionCard.Selected {
+    border-width: 0.18em;
+    color: black;
+    background-color: unset;
 }
 div.OptionCard:nth-child(1){
     float: left;

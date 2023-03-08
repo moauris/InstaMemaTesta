@@ -135,21 +135,21 @@
                             <span id="round_inc" class="OptionButton" onclick="optAdjustClicked(this)">增加</span>
                         </div>
                     </div>
-                    <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">数字集合： <span>全盘随机</span></div>
+                    <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">数字集合： <span id="numSetTx"></span></div>
                     <div class="OptionsFold">
-                        <p>选择测试所使用的数字集合</p>
+                        <p>选择每一轮测试所使用的数字集合</p>
                         <div class="OptionCardBox">
                             <div id="numset1" class="OptionCard" onclick="optAdjustClicked(this)">
                                 <h3>
                                     全盘随机
                                 </h3>
-                                随机选择 0 到 9 之间的任意数字
+                                随机抽取 0 到 9 之间的任意数字
                             </div>
                             <div id="numset2" class="OptionCard" onclick="optAdjustClicked(this)">
                                 <h3>
                                     圈圈数字
                                 </h3>
-                                优先选择 0 6 8 9 这四个数字
+                                优先抽取 0 6 8 9 这四个数字，剩下的数字随机抽取
                             </div>
                         </div>
                     </div>
