@@ -1,4 +1,4 @@
-const DEBUG : boolean = true;
+const DEBUG : boolean = false;
 
 
 const MainCanvas : HTMLDivElement | null = document.querySelector("#MainCanvas");

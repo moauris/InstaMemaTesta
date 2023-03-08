@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Insta Mema Testa (Dev)</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>    
+        <link rel="stylesheet" href="./styles/styles.css"/>
+        <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div id="MainCanvas" class="PageActivated">
+            <div id="Title"><h1><img src="./img/favicon.ico" height="128" width="128" alt="favicon"/> 瞬时记忆</h1></div>
+            <div class="StartMenu">
+                <div id="Start" class="StartMenuItem WiggleAnime" onclick="GameStart()">开始</div>
+                <div id="Readme" class="StartMenuItem WiggleAnime" onclick="ShowReadMe()">说明</div>
+                <div id="Setting" class="StartMenuItem WiggleAnime" onclick="ShowSettingPage()">设置</div>
+            </div>
+
+            <footer>2023 &copy; momi & liyucat All Rights Reserved.</footer>
+        </div>
+        <div id="CountDown" class="PageDeactivated">
+            <div class="SunrayBase Sunray0"></div>
+            <div class="SunrayBase Sunray1"></div>
+            <div class="SunrayBase Sunray2"></div>
+            <div class="SunrayBase Sunray3"></div>
+            <div class="SunrayBase Sunray4"></div>
+
+            <div class="SunrayBase Sunray5"></div>
+            <div class="SunrayBase Sunray6"></div>
+            <div class="SunrayBase Sunray7"></div>
+            <div class="SunrayBase Sunray8"></div>
+            <div class="SunrayBase Sunray9"></div>
+
+            <div class="SunrayBase Sunray10"></div>
+            <div class="SunrayBase Sunray11"></div>
+            <div class="SunrayBase Sunray12"></div>
+            <div class="SunrayBase Sunray13"></div>
+            <div class="SunrayBase Sunray14"></div>
+
+            <div class="SunrayBase Sunray15"></div>
+            <div class="SunrayBase Sunray16"></div>
+            <div class="SunrayBase Sunray17"></div>
+            <div class="SunrayBase Sunray18"></div>
+            <div class="SunrayBase Sunray19"></div>
+            <div class="SunrayBase Sunray20"></div>
+
+            <div class="CountDownNumBase CountDownNum3">3</div>
+            <div class="CountDownNumBase CountDownNum2">2</div>
+            <div class="CountDownNumBase CountDownNum1">1</div>
+        </div>
+
+        <div class="PageDeactivated" id="ShowNumberPage">
+            <div id="HealthBar">
+                <!-- To be created by js
+                    <ul>
+                        <li class="HealthPoint Filled"></li>
+                        <li class="HealthPoint Filled"></li>
+                        <li class="HealthPoint Filled"></li>
+                        <li class="HealthPoint"></li>
+                        <li class="HealthPoint"></li>
+                        <li class="HealthPoint"></li>
+                        <li class="HealthPoint"></li>
+                        <li class="HealthPoint"></li>
+                        <li class="HealthPoint"></li>
+                        <li class="HealthPoint"></li>
+                    </ul>
+                -->
+                
+            </div>
+            <div class="NumericBase" id="guessNumber_0">
+                0
+            </div>
+            <div class="NumericBase" id="guessNumber_1">
+                1
+            </div>
+            <div class="NumericBase" id="guessNumber_2">
+                2
+            </div>
+            <div class="NumericBase" id="guessNumber_3">
+                3
+            </div>
+            <div class="NumericBase" id="guessNumber_4">
+                4
+            </div>
+            <div class="NumericBase" id="guessNumber_5">
+                5
+            </div>
+            <div class="NumericBase" id="guessNumber_6">
+                6
+            </div>
+            <div class="NumericBase" id="guessNumber_7">
+                7
+            </div>
+            <div class="NumericBase" id="guessNumber_8">
+                8
+            </div>
+            <div class="NumericBase" id="guessNumber_9">
+                9
+            </div>
+
+        </div>
+
+        <div id="ScorePage" class="PageDeactivated">
+
+            <div class="StartMenu">
+                <div class="ScoreText">最后得分</div>
+                <h1 id="ScoreBoard" class="ScoreNum">666</h1>
+    
+                <div role="button" class="StartMenuItem WiggleAnime" onclick="ReturnToMenuClicked()">返回菜单</div>
+                <div role="button" class="StartMenuItem WiggleAnime" onclick="RestartGameClicked()">再来一次</div>
+    
+
+            </div>
+ 
+        </div>
+
+        <div id="SettingPage" class="PageDeactivated">
+            <div class="SettingBox">
+                <div class="SettingText">设置</div>
+                <div class="SettingOptions">
+                    <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">初始难度： <span id="startDiffTx">4</span></div>
+                    <div class="OptionsFold">
+                        <p>测试一开始提供的难度，可以选择 4 到 10 之间的任意整数</p>
+                        <p>难度代表每回合会提供多少数字进行记忆和选择</p>
+
+                        <div class="OptionButtonBox">
+                            <span id="diff_dec" class="OptionButton" onclick="optAdjustClicked(this)"
+                            onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">减少</span>
+                            <span id="diff_inc" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">增加</span>
+                        </div>
+                    </div>
+                    <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">回合数量： <span id="maxRoundTx">6</span></div>
+                    <div class="OptionsFold">
+                        <p>进行多少回合的测试，可以选择一个 3 到 10 之间的任意整数</p>
+
+                        <div class="OptionButtonBox">
+                            <span id="round_dec" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">减少</span>
+                            <span id="round_inc" class="OptionButton" onclick="optAdjustClicked(this)" onmousedown="optAdjustHeld(this)" onmouseup="optAdjustRelease()">增加</span>
+                        </div>
+                    </div>
+                    <div class="Options WiggleAnime" onclick="expandOptionClicked(this)">数字集合： <span id="numSetTx"></span></div>
+                    <div class="OptionsFold">
+                        <p>选择每一轮测试所使用的数字集合</p>
+                        <div class="OptionCardBox">
+                            <div id="numset1" class="OptionCard" onclick="optAdjustClicked(this)">
+                                <h3>
+                                    全盘随机
+                                </h3>
+                                随机抽取 0 到 9 之间的任意数字
+                            </div>
+                            <div id="numset2" class="OptionCard" onclick="optAdjustClicked(this)">
+                                <h3>
+                                    圈圈数字
+                                </h3>
+                                优先抽取 0 6 8 9 这四个数字，剩下的数字随机抽取
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Options WiggleAnime" onclick="exitSetting()">保存</div>
+
+                    <div class="Options OptionsDrap"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        
+        <script src="./scripts/game.js"></script>
+        <script src="./scripts/game_setting.js"></script>
+        <script src="./scripts/viewPortHandler.js"></script>
+        <script src="./scripts/script.js"></script>
+        <script src="./scripts/utilities.js"></script>
+        
+    </footer>
+</html>

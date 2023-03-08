@@ -23,10 +23,6 @@ class VvpHandler {
             
             
             this.setDeadZone();
-            if(DEBUG) {
-                this.clearGrids();
-                this.fillGrids();
-            }
     }
     /**
      * Gets the number of grid or blocks can be placed horizontally
@@ -55,10 +51,6 @@ class VvpHandler {
     public resetGrids()
     {
         this.Grids = this.createGrids();
-        if(DEBUG) {
-            this.clearGrids();
-            this.fillGrids();
-        }
         this.setDeadZone();
     }
     public createGrids() : boolean[][]

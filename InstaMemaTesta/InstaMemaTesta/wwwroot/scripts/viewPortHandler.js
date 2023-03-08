@@ -10,6 +10,9 @@ class VvpHandler {
         this.Radius = 3;
         this.Height = viewPort.height | 0;
         this.Width = viewPort.width | 0;
+        this.Ppg = 20;
+        if (DEBUG)
+            console.log("ctor::VvpHandler: There are " + this.totalGrids() + "under current viewport.");
         this.Grids = this.createGrids();
         this.setDeadZone();
     }
@@ -18,14 +21,14 @@ class VvpHandler {
      * @returns {number} number of grids or blocks can be placed horizontally
      */
     xGrids() {
-        return (this.Width / 20) | 0;
+        return (this.Width / this.Ppg) | 0;
     }
     /**
      * Get the number of grid or blocks can be placed vertically
      * @returns {number} number of grids or blocks can be placed vertically
      */
     yGrids() {
-        return (this.Height / 20) | 0;
+        return (this.Height / this.Ppg) | 0;
     }
     /**
      * Get the total number of grids or blocks on the screen
@@ -64,6 +67,32 @@ class VvpHandler {
             for (var y = this.Radius + 2; y < this.yGrids() - this.Radius; y++) {
                 this.Grids[x][y] = true;
             }
+        }
+    }
+    fillGrids() {
+        var x = this.Grids.length;
+        var y = this.Grids[0].length;
+        for (var i = 0; i < x; i++) {
+            for (var j = 0; j < y; j++) {
+                var grid = document.createElement("div");
+                grid.style.top = j * this.Ppg + "px";
+                grid.style.left = i * this.Ppg + "px";
+                grid.style.width = this.Ppg + "px";
+                grid.style.height = this.Ppg + "px";
+                grid.style.backgroundColor = this.Grids[i][j] ? "Blue" : "Red";
+                grid.style.borderRadius = "50%";
+                grid.style.position = "fixed";
+                grid.classList.add("debugGridDots");
+                ShowNumberPage === null || ShowNumberPage === void 0 ? void 0 : ShowNumberPage.appendChild(grid);
+            }
+        }
+    }
+    clearGrids() {
+        var grids = document.querySelectorAll("div.debugGridDots");
+        if (grids === null)
+            return;
+        for (var i = 0; i < grids.length; i++) {
+            ShowNumberPage === null || ShowNumberPage === void 0 ? void 0 : ShowNumberPage.removeChild(grids[i]);
         }
     }
 }

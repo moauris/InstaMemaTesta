@@ -4,6 +4,7 @@ const MainCanvas = document.querySelector("#MainCanvas");
 const CountDown = document.querySelector("#CountDown");
 const ShowNumberPage = document.querySelector("#ShowNumberPage");
 const ScorePage = document.querySelector("#ScorePage");
+const SettingPage = document.querySelector("#SettingPage");
 function TogglePageActive(div) {
     if (div === null)
         throw Error("The html element is null");
@@ -17,37 +18,88 @@ function TogglePageActive(div) {
     }
 }
 var gameSetting = new ImtGameSetting();
-gameSetting.MaxRound = 10;
-gameSetting.NumberSet = NumberSets.Circles;
-gameSetting.PositionSet = PositionSets.Everywhere;
 var vvpHandler = new VvpHandler(visualViewport);
 var game = new ImtGame(gameSetting, vvpHandler);
-function FillGrids() {
-    var x = vvpHandler.Grids.length;
-    var y = vvpHandler.Grids[0].length;
-    for (var i = 0; i < x; i++) {
-        for (var j = 0; j < y; j++) {
-            var grid = document.createElement("div");
-            grid.style.top = j * 20 + "px";
-            grid.style.left = i * 20 + "px";
-            grid.style.width = "20px";
-            grid.style.height = "20px";
-            grid.style.backgroundColor = vvpHandler.Grids[i][j] ? "Blue" : "Red";
-            grid.style.borderRadius = "50%";
-            grid.style.position = "fixed";
-            ShowNumberPage === null || ShowNumberPage === void 0 ? void 0 : ShowNumberPage.appendChild(grid);
-        }
-    }
-}
 function GameStart() {
     game.currentRound = 1;
-    game.difficulty = 4;
     game.StartRound(MainCanvas);
-    if (DEBUG)
-        FillGrids();
 }
-function restartGameClicked() {
-    game.difficulty = 4;
+function ReturnToMenuClicked() {
+    game.currentRound = 1;
+    TogglePageActive(ScorePage);
+    TogglePageActive(MainCanvas);
+}
+function RestartGameClicked() {
     game.currentRound = 1;
     game.StartRound(ScorePage);
+}
+function ShowSettingPage() {
+    TogglePageActive(MainCanvas);
+    TogglePageActive(SettingPage);
+}
+function ShowReadMe() {
+    throw new Error("ShowReadMe(): NotImplemented");
+}
+function expandOptionClicked(divOption) {
+    var OptionsSelected = document.querySelector("div.Options.Selected");
+    while (OptionsSelected !== null) {
+        OptionsSelected.classList.remove("Selected");
+        OptionsSelected = document.querySelector("div.Options.Selected");
+    }
+    divOption.classList.add("Selected");
+}
+function optAdjustClicked(choice) {
+    var opt = choice.id;
+    switch (opt) {
+        case "diff_inc":
+            game.setting.StartDifficulty += 1;
+            break;
+        case "diff_dec":
+            game.setting.StartDifficulty -= 1;
+            break;
+        case "round_inc":
+            game.setting.MaxRound += 1;
+            break;
+        case "round_dec":
+            game.setting.MaxRound -= 1;
+            break;
+        case "numset1":
+            game.setting.NumberSet = NumberSets.Full;
+            break;
+        case "numset2":
+            game.setting.NumberSet = NumberSets.Circles;
+            break;
+        default:
+            break;
+    }
+}
+var holdOptIntervalId = 0;
+function optAdjustHeld(choice) {
+    var opt = choice.id;
+    var callback = null;
+    switch (opt) {
+        case "diff_inc":
+            callback = () => game.setting.StartDifficulty += 1;
+            break;
+        case "diff_dec":
+            callback = () => game.setting.StartDifficulty -= 1;
+            break;
+        case "round_inc":
+            callback = () => game.setting.MaxRound += 1;
+            break;
+        case "round_dec":
+            callback = () => game.setting.MaxRound -= 1;
+            break;
+        default:
+            break;
+    }
+    if (callback !== null)
+        holdOptIntervalId = setInterval(callback, 100);
+}
+function optAdjustRelease() {
+    clearInterval(holdOptIntervalId);
+}
+function exitSetting() {
+    TogglePageActive(SettingPage);
+    TogglePageActive(MainCanvas);
 }

@@ -1,5 +1,8 @@
 "use strict";
-/** Represents one Insta Mema Testa Game Session */
+/** Represents one Insta Mema Testa Game Session
+ * @param {ImtGameSetting} setting The Current Game Setting
+ *
+*/
 class ImtGame {
     constructor(s, vp) {
         this.GuessNumbers = [];
@@ -39,15 +42,33 @@ class ImtGame {
             return;
         pb.classList.add("Filled");
     }
-    /** Starts a round of game on supplied grids object */
+    /** Starts a round of game on supplied grids object
+     * @param {HTMLDivElement | null} from Optional. Which page did we started the game. Default is ShowNumberPage.
+    */
     StartRound(from = ShowNumberPage) {
         //Check if score board should be shown instead
         if (this.setting.MaxRound < this.currentRound) {
             this.ShowScoreboard();
             return;
         }
+        //start the game
         if (this.currentRound === 1) {
+            //special handling for 1st round
             this.resetProgress();
+            this.difficulty = this.setting.StartDifficulty;
+            //Create ul li.HealthPoint
+            var ul = document.createElement("ul");
+            for (var i = 0; i < this.setting.MaxRound; i++) {
+                var li = document.createElement("li");
+                li.classList.add("HealthPoint");
+                ul.appendChild(li);
+            }
+            var HealthBar = document.querySelector("div#HealthBar");
+            if (HealthBar === null) {
+                throw new Error("div#HealthBar not found");
+            }
+            HealthBar.innerHTML = "";
+            HealthBar.appendChild(ul);
         }
         TogglePageActive(from);
         TogglePageActive(CountDown);
@@ -63,10 +84,16 @@ class ImtGame {
             this.resetGuessNum(classTags[i]);
         }
         //Get the numbers to display.
+        if (DEBUG)
+            console.log("GameStarted with difficulty:" + this.difficulty);
         var nums = Draw(this.difficulty, this.setting.NumberSet);
         this.viewPortHandler.resetGrids();
         //Below procedure selects the grids where the circles are placed in the center
         var coords = this.getCoordinates(this.viewPortHandler.Grids);
+        if (DEBUG) {
+            this.viewPortHandler.clearGrids();
+            this.viewPortHandler.fillGrids();
+        }
         if (nums.length !== coords.length) {
             throw new Error("The number of draws mismatch grids available: num, grid = (" + nums.length + ", " + coords.length + ")");
         }
@@ -131,7 +158,7 @@ class ImtGame {
         this.currentScore += this.scored();
         setTimeout(() => {
             this.StartRound();
-        }, 3000);
+        }, 1000);
     }
     //**A wrong number is chosen. Mark all remaining guess items wrong and start the next round if possible */
     WrongNumbers() {
@@ -144,7 +171,7 @@ class ImtGame {
         this.difficulty = this.difficulty - 1 < 4 ? 4 : this.difficulty - 1;
         setTimeout(() => {
             this.StartRound();
-        }, 3000);
+        }, 1000);
     }
     /**Show a number on a location on the viewport depending on the number supplied and grid coordinate
      * @param {number} num A number between 0 and 9.
@@ -156,8 +183,8 @@ class ImtGame {
             throw new Error("#guessNumber_" + num + " cannot be found.");
         }
         gN.classList.add("Show");
-        gN.style.top = center.Y * 20 - 60 + "px";
-        gN.style.left = center.X * 20 - 60 + "px";
+        gN.style.top = center.Y * this.setting.PixelsPerGrid - 60 + "px";
+        gN.style.left = center.X * this.setting.PixelsPerGrid - 60 + "px";
     }
     getCoordinates(grids) {
         var coords = [];
