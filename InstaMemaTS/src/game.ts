@@ -66,9 +66,13 @@ class ImtGame {
             this.ShowScoreboard();
             return;
         }
+        //start the game
+        
         if(this.currentRound === 1)
         {
+            //special handling for 1st round
             this.resetProgress();
+            this.difficulty = this.setting.StartDifficulty;
         }
         TogglePageActive(from);
         TogglePageActive(CountDown);
@@ -85,6 +89,7 @@ class ImtGame {
             this.resetGuessNum(classTags[i]);
         }
         //Get the numbers to display.
+        if(DEBUG) console.log("GameStarted with difficulty:" + this.difficulty);
         var nums : number[] = Draw(this.difficulty, this.setting.NumberSet);
         this.viewPortHandler.resetGrids();
         //Below procedure selects the grids where the circles are placed in the center

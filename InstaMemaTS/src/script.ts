@@ -48,13 +48,11 @@ function FillGrids()
 function GameStart()
 {
     game.currentRound = 1;
-    game.difficulty = 4;
     game.StartRound(MainCanvas);
     if(DEBUG) FillGrids();
 }
 function RestartGameClicked()
 {
-    game.difficulty = 4;
     game.currentRound = 1;
     game.StartRound(ScorePage);
 }
@@ -109,4 +107,10 @@ function optAdjustClicked(choice : HTMLElement)
             break;
     }
     
+}
+
+function exitSetting() 
+{
+    TogglePageActive(SettingPage);
+    TogglePageActive(MainCanvas);
 }

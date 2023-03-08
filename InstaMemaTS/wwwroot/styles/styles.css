@@ -60,7 +60,6 @@ div#SettingPage > div.SettingBox {
     border-radius: 2vw;
     border-style: solid;
     border-width: 0.2vw;
-    background-color: yellow;
     z-index: 0;
     animation: SettingBoxExtend 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
 }
@@ -120,8 +119,12 @@ div#SettingPage div.SettingOptions > div.Options:nth-child(3)
 {
     z-index: 53;
 }
-div#SettingPage div.SettingOptions > div.Options.OptionsDrap {
+div#SettingPage div.SettingOptions > div.Options:nth-child(5)
+{
     z-index: 52;
+}
+div#SettingPage div.SettingOptions > div.Options.OptionsDrap {
+    z-index: 50;
     /*background-color: rgba(255, 165, 0, 0.5); */
     background-color: white;
 }
