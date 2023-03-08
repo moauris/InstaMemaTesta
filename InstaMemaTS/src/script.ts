@@ -22,10 +22,7 @@ function TogglePageActive(div : HTMLDivElement | null)
     }
 }
 var gameSetting = new ImtGameSetting();
-gameSetting.MaxRound = 3;
-gameSetting.NumberSet = NumberSets.Circles;
-gameSetting.PositionSet = PositionSets.Everywhere;
-gameSetting.PixelsPerGrid = 20;
+
 var vvpHandler : VvpHandler = new VvpHandler(visualViewport, gameSetting);
 var game = new ImtGame(gameSetting, vvpHandler);
 function FillGrids()
@@ -86,3 +83,24 @@ function expandOptionClicked(divOption : HTMLDivElement)
     divOption.classList.add("Selected");
 }
 
+function optAdjustClicked(choice : HTMLElement)
+{
+    var opt : string = choice.id;
+    switch (opt) {
+        case "diff_inc":
+                game.setting.StartDifficulty += 1;
+            break;
+        case "diff_dec":
+                game.setting.StartDifficulty -= 1;
+            break;
+        case "round_inc":
+            game.setting.MaxRound += 1;
+        break;
+        case "round_dec":
+            game.setting.MaxRound -= 1;
+        break;
+        default:
+            break;
+    }
+    
+}
